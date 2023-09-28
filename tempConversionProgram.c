@@ -11,10 +11,13 @@ int main() {
     upper = 200;
     step = 10;
 
+    printf("Fahr\tCelsius\n");
+    printf("---------------\n");
+
     fahr = lower;
     while (fahr <= upper){
         celsius = (5.0/9.0) * (fahr - 32.0);
-        printf("%3.0f %6.1f\n", fahr, celsius);
+        printf("%3.0f \t %6.1f\n", fahr, celsius);
         fahr = fahr + step;
     }
 }
