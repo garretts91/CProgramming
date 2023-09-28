@@ -19,6 +19,7 @@ int main(){
         }
     }
     
+    
     printf("new lines: %d\nnew blanks: %d\nnew tabs: %d\n", nl, blanks, tabs);
 
     return 0;
