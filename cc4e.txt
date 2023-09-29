@@ -1,0 +1,133 @@
+cc4e
+
+Ch0
+
+- Heap refers to memory that C manages on our behalf when we need to borrow memory and give it back later
+- its up to the programmer to give dynamic memory back
+- Making good use of dynamic memory allocation
+- it is independent of any particular machine architecture
+- c provides pointers and the ability to do address arithmetic
+
+Ch1
+
+- all variables must be declared before use
+- a declaration consists of a type, and a list of variables which have that type
+- char - character, single byte
+- short - short integer
+- long - long integer
+- double - double-precision floating point
+- the size of these objects are machine-dependent
+- it is wise to write floating point constants with explicit decimal points even when they have integral values
+- scanf is like printf except it reads input instead of writing output
+- for and while loops are indeterminate
+- Symbolic Constants:
+	- #define LOWER
+	- #define UPPER
+- symbolic names are written in uppercase so they can be distinguished from lower case variable names
+- %ld is a long integer
+- double is a double length float
+- Arrays
+- Scope
+
+Ch2
+
+2.1 Variable names:
+- there are some restrictions on variable and symbolic constant names
+- reserved variables
+- choose variable names that make sense
+
+2.2 Data Types and Sizes:
+- char		- single byte, one character
+- int		- integer
+	- qualifiers:
+		- short int x;
+		- long int y;
+		- unsigned int z;
+		- int can be omitted in these cases
+- float 	- single precision floating point
+- double	- double precision floating point
+- precision depends on the machine
+- check the table in 2-2?
+
+2.3 Constants:
+- scientific notation for floats is legal
+- a leading 0 on an int represents an octal
+- a leading 0x represents hex
+- they both can be followed by L to make them a long
+- character constant is a single char written in single quotes
+- constant expression is an expression that involves only constants
+- quotes in a string are used as a delimiter
+(check Programming Truncation Explanation in gpt)
+
+2.4 Declarations:
+- All variables must be declared before use
+- a declaration specifies a type
+	- int lower, upper, step;
+	- char c, line[1000]
+- variables can be initialized in their declaration:
+	- char backslash = '\\';
+	int i = 0;
+	
+2.5 Arithmetic Operators
+- + - * / %
+- % cannot be applied to float or double
+
+2.6 Relational and Logic Operators
+- Relational Operators:
+	- > >= < <=
+	- they all have the same precedence
+- equality operators:
+	- == !=
+- logical connectives:
+	- && ||
+	- the precedence of && is higher than ||
+- unary negation operator ! 
+	- converts true to false and false to true
+	
+2.7 Type Conversions
+- chars and ints can be mixed in arithmetic
+- check out atoi
+- check out gets function
+- check out binary operators
+- check out the implicit arithmetic conversions
+- all floating point arithmetic in C is done in double precision
+- conversions take place across assignments
+	- int i;
+	- char c;
+	- i = c;
+	- c = i;
+
+2.8 Increment and Decrement Operators
+- ++ --
+
+2.9 Bitwise Logical Operators
+- & bitwise AND
+- | bitwise inclusive OR
+- ^ bitwise exclusive OR
+- << left shift
+- >> right shift
+- ~ one's compliment (unary)
+- check getbits operator
+- declaring the argument x to be unsigned ensures that when it is right shifted, vacated bits will be filled with zeroes and not sign bits (regardless of the machine it is ran on)
+- bitwise operators play a role in encryption, decryption, and checksum calculations
+****- look @ exercise 2-5? Modify getbits to number bits from left to right
+
+2.10 Assignment Operators and Expressions
+- i += 2
+- check bitcount
+****- look at the code in this section
+
+2.11 Conditional Expressions
+- if (a > b)
+	z = a;
+	else
+	z = b;
+- e1 ? e2 : e3
+- ternary operator
+
+2.12 Precedence and Order of Evaluation
+- check the table!
+- * indirection
+- & address of
+- check side effect operators
+- writing code that depends on order of evaluation is a bad programming practice in any language!
