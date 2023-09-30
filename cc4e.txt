@@ -455,4 +455,77 @@ int strindex(char s[], char t[])
     return -1;
 }
 
+- Each function definiton has the form:
+	- return-type function-name(argument declarations)
+	  {
+			declarations and statements
+	  }
+- various parts may be absent; a minimal function is 
+	- dummy () {}
+	- this is a do nothing function
+	- can be useful as a placeholder
+- a program is just a set of definitions of variables and functions
+- communication between the functions is by arguments and values returned by the functions
+	- and through external variables
+- functions can occur in any order in the source file
+	- the source program can be split into multiple files (so long as no function is split)
+- return statement returns a value from the called function to its caller
+	- "return expression";
+	- the expression will be converted to the return type of the function if necessary
+- the calling function is free to ignore the returned value
+- if a function fails to return a value, its value is garbage
+- multiple source files can be called upon using cc from terminal
+	- ex. cc main.c getline.c strindex.C
+	- it compiles the 3 files, and results in 3 .o files (object files)
+
+4.2 Functions Returning Non-Integers
+- atoi and atof
+	- converts strings to numerical values
+- atoi (ascii to int)
+	- a function used to convert a string representing an integer (in ASCII format) into an actual integer data type. 
+	- It takes a string as its argument and returns an integer
+	- ex. int atoi(const char *str);
+- atof (ascii to floatint-point)
+	- a function used to convert a string representing a floating-point number (in ASCII format) into a floating-point data type, typically a double
+	- ex. double atof(const char *str);
+- these are useful for parsing and converting user input or data read from files where numbers are represented as strings
+
+#include <ctype.h>
+double my_atof(char s[])
+{
+    double val, power;
+    int i, sign;
+    
+    for (i = 0; isspace(s[i]); i++); //skip white space
+    sign = (s[i] == '-') ? -1 : 1;
+    if (s[i] == '+' || s[i] == '-')
+    i++;
+    for (val = 0.0; isdigit(s[i]); i++)
+        val = 10.0 * val + (s[i] - '0');
+    if (s[i] == '.')
+        i++;
+    for (power = 1.0; isdigit(s[i]); i++){
+        val = 10.0 * val + (s[i] - '0');
+        power *= 10.0;
+    }
+    return sign * val / power;
+}
+
+- double sum, atof(char []);
+	- says that sum is a double and that atof is a function that takes one char argument
+- atof must be declared and defined consistently
+- if atof and the call to it in main have incosistent types, you will get an error
+- this can get tricky in separate compilation
+- if the function takes arguments, declare them; 
+	- if it takes no arguments, use void
+// atoi: convert string s to int using atof
+int atoi(char[s])
+{
+	double atof(char s[]);
+
+	return (int) atof(s);
+}
+
+4.3 External variables
+- A C program consists of a set of external objects, which are either variables or functions
 
