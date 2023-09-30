@@ -528,4 +528,24 @@ int atoi(char[s])
 
 4.3 External variables
 - A C program consists of a set of external objects, which are either variables or functions
+- external variables are defined outside of any function
+	- can be available to many Functions
+- "external linkage"
+	- refers to the property of a variable or function that allows it to be accessed or used from different source files (translation units) in a program. 
+	- Variables and functions with external linkage have a global scope, meaning they can be used across multiple files, not just the file in which they are declared.
+- apply with caution!
+- pushing and popping operators and operands:
+while (next operator or operand is not EOF indicator)
+	if (number)
+		push it
+	else if (operator)
+		pop operands
+		do operation
+		push result
+	else if (newline)
+		pop and print top of stack
+	else 
+		error
 
+
+	
