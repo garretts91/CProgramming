@@ -666,7 +666,76 @@ int main()
 
 4.10 Recursion
 - In C, a function may call itself either directly or indirectly
-- 
+#include <stdio.h>
 
+// Recursive function to calculate the factorial of a number
+unsigned long long factorial(int n) {
+    if (n == 0) {
+        return 1; // Base case: 0! = 1
+    } else {
+        return n * factorial(n - 1); // Recursive case: n! = n * (n-1)!
+    }
+}
+
+int main() {
+    int num = 52;
+    unsigned long long result = factorial(num);
+    printf("Factorial of %d = %llu\n", num, result);
+    return 0;
+}
+
+- the standard library includes a version of qsort that can sort objects of any type
+- recursive code is compact and often easier to write and understand than the non-recursive equivalent
+
+4.11 The C Preprocessor 
+- used for #include and #defined
+	- #include "filename"
+		- if the filename is quoted, searching begins where the source program was found
+	- #include <filename>
+		- searching follows an implementation defined rule to find the file
+- #include is the preferred way to tie the declarations together for a large program
+
+4.11.2 Macro Substitution
+- A definition has the form
+	#define name replacement text
+- Macro substitution is a powerful tool in C for creating reusable and easy-to-maintain code. 
+- Macros can be used to define constants, simple calculations, and even short code snippets that are used frequently. 
+- However, it's important to use macros carefully and follow best practices to avoid potential pitfalls, 
+	- such as unexpected behavior due to operator precedence or side effects in macro expressions.
+- the ## operator is used for token pasting or token concatenation
+#define CONCATENATE(a, b) a ## b
+
+#include <stdio.h>
+
+#define UNIQUE_NAME(name, suffix) name ## _ ## suffix
+
+int main() {
+    int variable_foo = 42;
+    int variable_bar = 10;
+
+    int result = UNIQUE_NAME(variable, foo); // Combines variable and foo into variable_foo
+    printf("Result: %d\n", result);
+
+    result = UNIQUE_NAME(variable, bar); // Combines variable and bar into variable_bar
+    printf("Result: %d\n", result);
+
+    return 0;
+}
+
+4.11.3 Conditional Inclusion
+-  refers to the process of including or excluding parts of the source code based on certain conditions during the preprocessing phase. 
+- This is typically achieved using preprocessor directives, and it allows you to create code that is more versatile and adaptable for different scenarios.
+- The most common preprocessor directives used for conditional inclusion are:
+**#if, #elif, #else, and #endif: These directives are used to conditionally include or exclude code based on preprocessor-defined macros or constants. For example:
+
+#define DEBUG 1
+
+#if DEBUG
+    // Code included when DEBUG is true
+    printf("Debug mode is enabled.\n");
+#else
+    // Code included when DEBUG is false
+    printf("Debug mode is disabled.\n");
+#endif
 
 
