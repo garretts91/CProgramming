@@ -547,6 +547,91 @@ while (next operator or operand is not EOF indicator)
 	else 
 		error
 
+#include <stdio.h>
+#include <stdlib.h> //for atof
+
+#define MAXOP 100 //max size of operand or operator
+#define NUMBER '0' //signal that a number was found
+
+int getop(char []);
+void push(double);
+double pop(void);
+
+// reverse polish calculator
+int main()
+{
+    int type;
+    double op2;
+    char s[MAXOP];
+
+    while ((type = getop(s)) != EOF){
+        switch (type) {
+        case NUMBER:
+            push(atof(s));
+            break;
+        case '+':
+            push(pop() + pop());
+            break;
+        case '*':
+            push(pop() * pop());
+            break;
+        case '-':
+            op2 = pop();
+            push(pop() - op2);
+            break;
+        case '/':
+            op2 = pop();
+            if (op2 != 0.0)
+                push(pop() / op2);
+            else printf("error: zero divisor\n");
+            break;
+        case '\n':
+            printf("\t%.8g\n", pop());
+            break;
+        default:
+            printf("error: unknown command %s\n", s);
+            break;           
+        }
+    }
+    return 0;
+}
+
+- variable is external if it is defined outside of any function
+- getop fetches the next operator or operand
+
+4.4 Scope Rules
+- extern declatation
+- You can declare a global variable as extern in a source file to indicate that it's defined in another source file. 
+	- This allows you to use the variable in the current source file without redefining it.
+- there must only be one definition of an external variable among all the files that make up the source Program
+	- other files may contain extern declatations to access it
+- "file 1":
+	extern int sp;
+	extern double val[];
+
+	void push(double f) {...}
+	double pop(void) {...}
+- "file2":
+	int sp = 0;
+	double val[MAXVAL];
+- the extern declaration in file lie ahead of and outside the function definition,
+	- they apply to all functions;
+
+4.5 Header Files 
+- Header files in C are used to declare the interfaces, prototypes, and declarations for functions, variables, and types that are used across multiple source files in a program. 
+	- They play a crucial role in modularizing and organizing your code, promoting code reusability, and reducing the likelihood of errors. 
+- Declaration of Functions and Variables
+	- Header files typically contain the declarations (function prototypes) of functions and variables that are meant to be used across multiple source files.
+- Code Reusability
+	- Header files allow you to reuse code across multiple source files. By including a header file, you can access functions and variables defined in one source file from another.
+	- This promotes code modularity and makes it easier to maintain and update your codebase.
+- Avoiding Code Duplication
+	- By placing common function prototypes and declarations in header files, you avoid duplicating the same declarations in multiple source files. 
+	- This reduces the risk of inconsistencies and makes it easier to update the code.
+- Encapsulation
+	- Header files can also be used to encapsulate the implementation details of a module (source file).
+	- You can hide the internal implementation details and only expose the necessary parts through the header file.
+- Standard Library Headers
 
 
-	
+
