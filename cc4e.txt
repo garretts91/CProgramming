@@ -632,6 +632,41 @@ int main()
 	- Header files can also be used to encapsulate the implementation details of a module (source file).
 	- You can hide the internal implementation details and only expose the necessary parts through the header file.
 - Standard Library Headers
+	- C also provides a set of standard library header files, such as <stdio.h> for input and output functions and <stdlib.h> for memory allocation functions. 
+	- These headers contain prototypes and declarations for standard library functions.
+- Inclusion using #include
+	- To use a header file in a source file, you include it using the #include preprocessor directive. 
+	- For example, #include "mylibrary.h" brings in the declarations from "mylibrary.h."
+
+4.6 Static variables
+- the static declaration limits the scope of that object to the rest of the source file being compiled
+- static storage is specified by prefixing the normal declaration with the word Static
+- if a function is declared static, its name is invisible outside of the file in which it is declared
+- static can also be applied to internal variables
+	- are local to a particular function
+	- internal static variables provide private, permanent storage within a single function
+
+4.7 Register Variables
+- a register declaration advises the compiler that the variable in question will be heavily used
+- the register declaration can only be applied to automatic variables and to the formal parameters of a function
+- only certain types are allowed
+- theyre usually used for faster access
+- it isnt used much these days
+
+4.8 Block structure
+- Block structures are fundamental for organizing code, managing scope, and controlling program flow in C. 
+- They help ensure that variables have well-defined lifetimes and scopes and are a key part of creating modular and maintainable C programs.
+
+4.9 Initialization
+- for external and static variables, the initializer must be a constant expression
+- refers to the process of giving a variable its initial value when it is declared
+- Initialization is an important aspect of C programming because it ensures that variables start with a known and often meaningful value
+- when the size of an array is omitted, the compuler will compute the length by counting the initializers \
+- it is an error to have too many initializers
+
+4.10 Recursion
+- In C, a function may call itself either directly or indirectly
+- 
 
 
 
