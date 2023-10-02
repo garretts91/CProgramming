@@ -920,4 +920,56 @@ int main() {
 - Direct declarators can become more complex when combined with pointer declarators and additional qualifiers. 
 - Understanding declarators is crucial when working with C declarations and understanding the structure of variables, arrays, and functions in C programs.
 
+Ch6 Structures
+- a structure is a collection of one or more variables
+    - can be of different types
+    - theyre grouped together under a signle name for convenient handling
+- Structs help organize complicated data (esp in large programs)
+    - they help permit a group of related variables to be treated as a unit instead of separately
+- automatic structures and arrays can be initialized
+
+6.1 Basic Structures
+- structure tag is the name given to the struct
+- variables named in structs are called members
+- the same meber names can occur in different structs
+    - usally better used with closely related objects
+- . connects the struct name and the member name
+
+#include <stdio.h>
+#include <string.h>
+
+// Define a struct for a payroll record
+struct PayrollRecord {
+    int employeeID;
+    char firstName[50];
+    char lastName[50];
+    float hourlyRate;
+    int hoursWorked;
+    float totalPay;
+};
+
+int main() {
+    // Create a payroll record
+    struct PayrollRecord employee;
+
+    // Fill in the details
+    employee.employeeID = 101;
+    strcpy(employee.firstName, "John");
+    strcpy(employee.lastName, "Doe");
+    employee.hourlyRate = 15.50;
+    employee.hoursWorked = 40;
+    employee.totalPay = employee.hourlyRate * employee.hoursWorked;
+
+    // Display the payroll record
+    printf("Employee ID: %d\n", employee.employeeID);
+    printf("Name: %s %s\n", employee.firstName, employee.lastName);
+    printf("Hourly Rate: %.2f\n", employee.hourlyRate);
+    printf("Hours Worked: %d\n", employee.hoursWorked);
+    printf("Total Pay: %.2f\n", employee.totalPay);
+
+    return 0;
+}
+
+
+
 
