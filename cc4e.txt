@@ -970,6 +970,64 @@ int main() {
     return 0;
 }
 
+6.2 Structures and Functions
+- the only legal operations on a struct are copying it or assigning to it as a unite
+    - taking its address with &, and accessing its members (i.e. employeeID)
+- if a large struct is passed to a function, it is more efficient to pass a pointer than to copy the whole struct
+- pointers to structs are used a token
+    - if a p is a pointer to a struct, then
+    p->member-of-struct
+
+6.3 Arrays of Structures
+- In this example, we define a struct Employee to represent an employee record. 
+- We create an array of structures called employees to store three employee records. 
+- Then, we fill in the details for each employee by accessing the elements of the array of structures and finally display the employee records.
+- This allows you to efficiently store and manage multiple records of the same structure type, 
+    making it useful for tasks such as maintaining employee databases or handling data with a similar structure.
+
+#include <stdio.h>
+#include <string.h>
+
+// Define a struct for an employee record
+struct Employee {
+    int employeeID;
+    char firstName[50];
+    char lastName[50];
+    float salary;
+};
+
+int main() {
+    // Create an array of structures to store employee records
+    struct Employee employees[3];
+
+    // Fill in the details for each employee
+    employees[0].employeeID = 101;
+    strcpy(employees[0].firstName, "John");
+    strcpy(employees[0].lastName, "Doe");
+    employees[0].salary = 55000.0;
+
+    employees[1].employeeID = 102;
+    strcpy(employees[1].firstName, "Alice");
+    strcpy(employees[1].lastName, "Smith");
+    employees[1].salary = 60000.0;
+
+    employees[2].employeeID = 103;
+    strcpy(employees[2].firstName, "Bob");
+    strcpy(employees[2].lastName, "Johnson");
+    employees[2].salary = 52000.0;
+
+    // Display the employee records
+    printf("Employee Records:\n");
+    for (int i = 0; i < 3; i++) {
+        printf("Employee ID: %d\n", employees[i].employeeID);
+        printf("Name: %s %s\n", employees[i].firstName, employees[i].lastName);
+        printf("Salary: %.2f\n\n", employees[i].salary);
+    }
+
+    return 0;
+}
+
+
 
 
 

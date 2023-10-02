@@ -17,18 +17,18 @@ int main() {
 
     // Fill in the details
     employee.employeeID = 101;
-    strcpy(employee.firstName, "John");
-    strcpy(employee.lastName, "Doe");
-    employee.hourlyRate = 15.50;
+    strcpy(employee.firstName, "Fox");
+    strcpy(employee.lastName, "Mulder");
+    employee.hourlyRate = 44.50;
     employee.hoursWorked = 40;
     employee.totalPay = employee.hourlyRate * employee.hoursWorked;
 
     // Display the payroll record
     printf("Employee ID: %d\n", employee.employeeID);
     printf("Name: %s %s\n", employee.firstName, employee.lastName);
-    printf("Hourly Rate: %.2f\n", employee.hourlyRate);
+    printf("Hourly Rate: $%.2f\n", employee.hourlyRate);
     printf("Hours Worked: %d\n", employee.hoursWorked);
-    printf("Total Pay: %.2f\n", employee.totalPay);
+    printf("Total Pay: $%.2f\n", employee.totalPay);
 
     return 0;
 }
