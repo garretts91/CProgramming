@@ -871,7 +871,53 @@ int main() {
 		- NULL is often used in place of 0
 - pointers may be compared under certain circumstances
 - any pointer can be meaningfully compared for equality or inequality with 0
+- Pointer arithmetic is primarily used for iterating over arrays and other data structures
 
+5.5 Character Pointers and Functions
+- an array is terminated with '\0' so that programs can find the end
 
+5.6 Pointer Arrays; Pointers to Pointers
+- pointers are variables themselves, and can be stored in arrays just like other variables
+- the sorting process has 3 steps:
+	- read all the lines of input
+	- sort them
+	- print them in order
+- the input routing has to collect and save the characters of each line and build an array of pointers to the lines
+- it will have to count the number of input lines, because that info is needed for sorting and printing
+
+5.7 Multi-dimensional Arrays
+- C provides rectangular multi-dimensional arrays
+- they are much less used than arrays of pointers
+- syntax:
+	daytab[i][j] [row][col]
+
+5.8 Initialization of Pointer Arrays 
+- you can initialize with specific values or:
+- you can initialize with null pointers
+
+5.9 Pointers vs. Multi-dimensional Arrays
+- the advantage of the pointer array is that the rows of the array may be of different lengths
+
+5.10 Command-line arguments
+- when main is called, it is called with two arguments
+- the first is the number of command line arguments the program was invoked with
+- the second is a pointer to an array of character strings that contain the arguments, one per string
+- we can manipulate the pointer rather than index the array
+
+5.11 Pointers to Functions
+- in C, a function itself is not a variable
+- it is possible to define pointers to functions
+
+5.12 Complicated Declarations
+- one good way to synthesize declarations is in small steps with typedef
+- look @ page 122
+- A "direct declarator" or "direct-dcl" in C refers to the part of a declaration that directly specifies the name and type of an identifier. 
+- In C's grammar for declarations, a declarator is composed of a pointer part and a direct declarator part. 
+- The direct declarator specifies the name of the declared entity and its type. 
+- It may also include additional information such as array dimensions, function parameters, and other qualifiers.
+- general syntax:
+	type-specifier declarator;
+- Direct declarators can become more complex when combined with pointer declarators and additional qualifiers. 
+- Understanding declarators is crucial when working with C declarations and understanding the structure of variables, arrays, and functions in C programs.
 
 
