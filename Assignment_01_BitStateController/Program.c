@@ -1,6 +1,7 @@
 ﻿#include <stdio.h>
 #include <stdint.h>
 #include "BitStateController.h"
+#include "BitStateController.c"
 
 int main() 
 {
