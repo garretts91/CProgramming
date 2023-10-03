@@ -24,46 +24,48 @@ void BitStateControllerSetBitState(BitStateControllerPtr bitStateControllerPtr, 
 			break;
 		case Bit_2:
 			if (bitState == On) {
-				bitStateControllerPtr->bitStates |= BIT_ONE_BIT_MASK;
+				bitStateControllerPtr->bitStates |= BIT_TWO_BIT_MASK;
 			} else {
-				bitStateControllerPtr->bitStates &= BIT_ONE_BIT_MASK;
+				bitStateControllerPtr->bitStates &= BIT_TWO_BIT_MASK;
 			} break;
 		case Bit_3:
 			if (bitState == On) {
-				bitStateControllerPtr->bitStates |= BIT_ONE_BIT_MASK;
+				bitStateControllerPtr->bitStates |= BIT_THREE_BIT_MASK;
 			} else {
-				bitStateControllerPtr->bitStates &= BIT_ONE_BIT_MASK;
+				bitStateControllerPtr->bitStates &= BIT_THREE_BIT_MASK;
 			} break;
 		case Bit_4:
 			if (bitState == On) {
-				bitStateControllerPtr->bitStates |= BIT_ONE_BIT_MASK;
+				bitStateControllerPtr->bitStates |= BIT_FOUR_BIT_MASK;
 			} else {
-				bitStateControllerPtr->bitStates &= BIT_ONE_BIT_MASK;
+				bitStateControllerPtr->bitStates &= BIT_FOUR_BIT_MASK;
 			} break;
 		case Bit_5:
 			if (bitState == On) {
-				bitStateControllerPtr->bitStates |= BIT_ONE_BIT_MASK;
+				bitStateControllerPtr->bitStates |= BIT_FIVE_BIT_MASK;
 			} else {
-				bitStateControllerPtr->bitStates &= BIT_ONE_BIT_MASK;
+				bitStateControllerPtr->bitStates &= BIT_FIVE_BIT_MASK;
 			} break;
 		case Bit_6:
 			if (bitState == On) {
-				bitStateControllerPtr->bitStates |= BIT_ONE_BIT_MASK;
+				bitStateControllerPtr->bitStates |= BIT_SIX_BIT_MASK;
 			} else {
-				bitStateControllerPtr->bitStates &= BIT_ONE_BIT_MASK;
+				bitStateControllerPtr->bitStates &= BIT_SIX_BIT_MASK;
 			} break;
 		case Bit_7:
 			if (bitState == On) {
-				bitStateControllerPtr->bitStates |= BIT_ONE_BIT_MASK;
+				bitStateControllerPtr->bitStates |= BIT_SEVEN_BIT_MASK;
 			} else {
-				bitStateControllerPtr->bitStates &= BIT_ONE_BIT_MASK;
+				bitStateControllerPtr->bitStates &= BIT_SEVEN_BIT_MASK;
 			} break;	
 		case Bit_8:
 			if (bitState == On) {
-				bitStateControllerPtr->bitStates |= BIT_ONE_BIT_MASK;
+				bitStateControllerPtr->bitStates |= BIT_EIGHT_BIT_MASK;
 			} else {
-				bitStateControllerPtr->bitStates &= BIT_ONE_BIT_MASK;
+				bitStateControllerPtr->bitStates &= BIT_EIGHT_BIT_MASK;
 			} break;											
+		default:
+			break;
 	}
 }
 
@@ -75,9 +77,22 @@ enum BitState BitStateControllerGetBitState(BitStateControllerPtr bitStateContro
         case Bit_1:
             if ((bitStateControllerPtr->bitStates & BIT_ONE_BIT_MASK) != 0) {
                 switchState = On;
-            }
+            } else {
+				switchState = Off;
+			}
             break;
-	
+		case Bit_2:
+			if ((bitStateControllerPtr->bitStates & BIT_TWO_BIT_MASK) != 0) {
+				switchState = On;
+			} else {
+				switchState = Off;
+			}
+			break;
+		case Bit_3:
+			if ((bitStateControllerPtr->bitStates & BIT_THREE_BIT_MASK) != 0) {
+				switchState = On;
+			}
+			break;
 		return switchState;
 	}
 }
