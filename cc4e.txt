@@ -1137,3 +1137,127 @@ union u+tag {
 6.9 Bit-fields
 *** Look this over in the book! ***
 
+Ch7 Input and Output 
+- IO is not part of the C language itself
+- The ANSI (American National Standards Institute) standard defines these library functions precisely, so that they can exist in compatible form
+    in any system where C exists
+
+7.1 Standard Input and Output
+- a text stream consists of a sequence of lines; each line ends with a newline character
+- if the system doesnt operate that way, the library does what it can to make it appear as if it does
+- the library might convert carriage return and linefeed to newline on input and back again on output
+- standard input (device) is usually a keyboard (with getchar)
+    - int getchar(void)
+    - getchar returns the next input character each time it is called, or EOF when it encounters end of file
+- a file may be subsitited for the keyboard by using < for input redirection
+    - prog <infile
+    - otherprog | prog 
+        - runs these two programs and pipes the standard output of otherprog into the standard input of prog
+- int putchar(int)
+    - is used for output 
+- output can usually be redirected to a file with <filename (if prog uses putchar)
+- each source file that refers to an input/output library function must include 
+    - #include <stdio.h>
+- <> a search is made for the header in a standard set of places
+
+7.1 Formatted Output - printf
+- printf translates internal values to characters
+- See app b
+- the format string contains two types of objects: 
+    - ordinary characters which are copied to the output stream and
+    - conversion specifications, each of which causes conversion and printing of the next successive argument to printf 
+- each conversion specification begins with %
+- between % and the conversion character there may be (in order):
+    - - which specifies left adjustment of the converted argument
+    - a number that specifies minimum field width
+    - a period which separates the field width from the precision 
+    - a number, the precision that specifies the maximum number of characters to be printed from a string or
+        - the number of digits after the decimal in a floating point value or
+        - the minimum number of digits for an integer
+Format Specifier	
+Description
+%c For b type.
+%d For signed integer type.
+%e or %E For scientific notation of floats.
+%f For float type.
+%g or %G For float type with the current precision.
+%i Unsigned integer
+%ld or %li Long
+%lf Double
+%Lf Long double
+%lu Unsigned int or unsigned long
+%lli or %lld Long long
+%llu Unsigned long long
+%o Octal representation
+%p Pointer
+%s String
+%u Unsigned int
+%x or %X Hexadecimal representation
+%n Prints nothing
+%% Prints % character
+
+- also see: page 154 for another table and an example
+
+7.3 Variable-Length argument lists
+<stdarg.h> contains a set of macro definitions that define how to step through an argument list
+- argument pointers
+
+7.4 Formatted Input - Scanf 
+- scanf is the input analog of printf 
+- it reads characters from the standard input, interprets them according to the specification in format 
+    - stores the results though the remaining arguments
+- arguments after the first one must be pointers 
+    - indicate where the corresponding converted input should be stored
+- scanf stops when it exhausts its format string 
+    - or when some input fails to match the control spec 
+- sscanf reads from a string instead of standard input 
+    - it scans the string according to the format, and stores the values through the arguments, which must be pointers
+        - int sscanf(char *string, char *format, arg1, arg2, etc.)
+- format strings may contain
+    - blanks or tabs (which are ignored)
+    - ordinary characters (not %) 
+    - conversion specifications, consisting of the char %, an optional assignment suppression char * 
+        - an optional number specifying max field width 
+        - an optional h, l, or L indicating width, and a conversion character 
+- a conversion spec directs the conversion of the next input field 
+- an input field is defined as a string on non-white space characters 
+    - it extends to either to the next white space character or until the field width is exhausted 
+    - the conversion char indicates the intepretation of the input field 
+        - corresponding arguments must be pointers 
+            - required by call by value semantics of C 
+https://www.geeksforgeeks.org/all-forms-of-formatted-scanf-in-c/
+- an array name is a pointer 
+- check page 158/159 for some examples 
+
+7.5 File Access 
+- file access is used by using cat 
+    - ex. cat x.c y.c 
+    - prints the contents of the files x.c and y.c on the standard output 
+- before a file can be read or written, a file has to be opened by the function
+    - fopen 
+- fopen takes an external name, and returns a pointer to be used in subsequent reads or writes of the file 
+- this is called a file pointer 
+    - points to a struct that contains information about the file, such as a location of a buffer,
+        - current char position in the buffer, whether it is being read or written,
+        - and whether errors or EOF have occurred
+- File pointer declaration:
+    - FILE *fp;
+    - FILE *fopen(char *name, char *mode);
+    - *fp is a pointer to a file, fopen returns a pointer to a FILE 
+    - FILE is a type name 
+- the call to fopen in a program:
+    -  fp = fopen(name, mode);
+- allowable modes are:
+    - r - read 
+    - w - write 
+    - a - append 
+- if a non existent file is open with append, it is created (if possible)
+- opening an existing file for writing will delete the old contents of the file 
+- opening with append preserves the contents 
+- also check permissions when opening specific files 
+- getc returns the next char from the stream
+- fscanf and fprintf are identical to scanf and printf except the leading f is a pointer 
+- 
+
+
+
