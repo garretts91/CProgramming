@@ -1028,7 +1028,112 @@ int main() {
 }
 
 6.4 Pointers to Structures
+- Pointers to structures in C are used to work with complex data structures efficiently. 
+- They allow you to access and manipulate the members (fields) of a structure without having to copy the entire structure. 
+- This can be particularly useful when you're dealing with large data structure
+- you cannot add two pointers
+- subtraction is legal
+- you have to adjust the algorithm to make sure that it does not general an illegal pointer or
+    - attempt to access an element outside the array
+- pointer arithmetic that involves the first element beyond the end of an array will work correctly
+- the size of a structure is not necessarily the sum of the sizes of its members 
+- the sizeof operator will return proper values
+- ex.
+    - if a char is one byte and an int four bytes, the struct might requires eight bytes, not five
 
+6.5 Self-Referential Structures
+- keeping a set a words will be sorted at all times by placing each word into its proper position in the order as it arrives
+- Binary Trees:
+    - the tree contains one node per distinct word
+    - each word contains:
+        - a pointer to the text of the word
+        - a count of the number of occurrences
+        - a pointer to the left child node
+        - a pointer to the right child node
+    - no node can contain more than two children
+    - it might only have zero or one
+    - how nodes are maintained:
+        - any node the left subtree contains only words that are lexicographically less than the word at the node,
+        - and the right subtree contains only words that are greater
+    - ex. the tree for the sentence "now is the time for all good men to come to the aid of their party 
+        - as built by inserting each word as it is encountered:
+              now
+            /     \ 
+          is      the 
+        /  \      |   \
+       for  men   of   time 
+      /  \        |    /   \
+    all  good    party their to
+    / \
+  aid  come   
 
+- to find out whether a new word is already in the tree, start at the root and compare the new work to the word stored at that node
+- if they match, the question is answered affirmatively
+- if the new word is less than the tree word, continue searching at the left child, otherwise at the right child
+- if there is no child in the required direction, the new word is not in the tree, and the empty slot is the proper place to add the new word
+- the process is recursive since the search from any node uses a search from one of its children
+- eventually the word either matches something already in the tree (in which case the count is incremented)
+    - or a null pointer is encountered, indicating that a node must be created and added to the tree
+    - if a new node is created, addtree returns a pointer to it, which is installed in the parent node 
 
+In a binary search tree, the values in the left subtree are smaller than the value in the parent node, and the values in the right subtree are greater. 
+When inserting a new value, you compare it with the current node's value and decide whether to place it in the left or right subtree based on this comparison. 
+This ensures that the tree is organized for efficient searching.
+Example:
+If the parent node contains the value 10, 
+a smaller value like 5 would be placed in the left subtree, 
+and a larger value like 15 would be placed in the right subtree.
+
+- integers often must be located at even addresses
+- malloc function:
+    - memory allocation
+
+6.6 Table Lookup
+- Table lookup in C is a technique used to search for a value or retrieve data from a predefined table or data structure. 
+    -This table is often an array, and the idea is to find an item in the table based on a key or index
+    - create a table
+    - search for an item
+    - error handling
+
+6.7 typedef
+- typedef is used for creating new data type names
+    - ex typedef int Length;
+        - makes the name Length a synonym for Length
+        - Length can now be used in the same way as the type int 
+    - ex typedef char *String
+        - String is now a synonym for character pointer
+        - can now be used in declarations and casts 
+- typedef does not create a new type,
+    - it adds a new name for some existing type
+- variables declared in this way have the same properties as the variables theyre "replacing"
+- typedef is kind of like #define 
+- Two main reasons to use typedef:
+    - parameterize a program against portability problems
+    - provide better documentation of a program
+        - Treeptr may be easier to understand than one declared only as a pointer to a complicated structure 
+
+6.8 Unions
+- a union is a variable that may hold (at different times) objects of different types and sizes
+    - with the compiler keeping track of size and alignment requirements
+- they provide a way to manipulate different kinds of data in a single area of storage
+    - without embedding any machine-dependent info in the program 
+union u+tag {
+    int ival;
+    float fval;
+    char *sval;
+} u;
+
+- the variable u will be large enough to hold the largest of the three data types
+- any one of these types can be assigned to u and then used in expressions
+    - so long as the usage is consistent
+- it is the programmers responsibility to keep track of which type is currently stored in a union
+- the results are implementation dependent if something is stored as one type and extracted as another
+    - union-name.member 
+    - union-pointer->member
+- unions may occur within structures and arrays and vice versa
+- notation for accessing a member of a union in a struct is identical to that for nested structs
+- a union may only be initialized with a value of the type of its first member
+
+6.9 Bit-fields
+*** Look this over in the book! ***
 
