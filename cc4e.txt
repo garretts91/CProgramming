@@ -1281,6 +1281,7 @@ https://www.geeksforgeeks.org/all-forms-of-formatted-scanf-in-c/
 
 7.8 Miscellaneous Functions 
 7.8.1 String Operations 
+https://www.scaler.com/topics/c/string-functions-in-c/
 - look @ table on pg 166 
 
 7.8.2 Character Class Testing and Conversion 
