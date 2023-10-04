@@ -1257,7 +1257,76 @@ https://www.geeksforgeeks.org/all-forms-of-formatted-scanf-in-c/
 - also check permissions when opening specific files 
 - getc returns the next char from the stream
 - fscanf and fprintf are identical to scanf and printf except the leading f is a pointer 
-- 
+- fclose breaks the connection between the file pointer and the external name that was established by fopen 
+    - allows the pointer to look for another file 
+- it is a good idea to free file pointers when they are no longer needed 
+- this also flushes the buffer 
+- fclose is used automatically when a program terminates normally 
 
+7.6 Error Handling - stderr and exit 
+- stderr is assigned to a program in the same way that stdin and stdout are 
+- look @ page 163 for an example 
+- return 0 is the convention that everything went well 
+- within main, return expr is equivalent to exit(expr) 
+    - exit has the advantage that it can be called from other functions 
+- feof(FILE *) is analogous to ferror; it returns non-zero if EOF has occurred on the specified file 
+- any serious program should take care to return sensible, useful status values 
 
+7.7 Line Output and Input 
+- fgets reads the next input line (inc newline) from file fp into the character array line; 
+    - at most maxline-1 chars will be read 
+    - the resulting line is terminated with null 
+- fgets returns line; on EOF or error if it returns null 
+- fgets and fputs 
+
+7.8 Miscellaneous Functions 
+7.8.1 String Operations 
+- look @ table on pg 166 
+
+7.8.2 Character Class Testing and Conversion 
+- look @ table on pg 166 
+
+7.8.3 Ungetc
+- ungetc pushes the character c back onto file fp and returns either c, of EOF for an error 
+- only one char of pushback is guaranteed per file 
+- ungetc can be used with any of the input functions like scanf, getc, or getchar
+
+7.8.4 Command Execution 
+- system(char *s) executes the command contained in the char string s, then resumes execution of the current program 
+- the contents of s depend on the local OS 
+- system("date")
+
+7.8.5 Storage Management
+- malloc and calloc obtain blocks of memory dynamically 
+- void *malloc(size_t n)
+    - returns a pointer to n byte of uninitialized storage, or NULL if the request cannot be satisfied
+- void *calloc(size_t n, size_t size)
+    - returns a pointer to enough space for an array of n objects of the specified size, or NULL if the request cannot be satisfied \
+- they must be cast in the appropriate type 
+    - int *ip;
+    - ip = (int *) calloc(n, sizeof(int));
+- free(p) frees the space pointed to by p, where p was originally obtained by a call to malloc or calloc 
+- it is a ghastly error to free something not obtained by calling calloc or malloc 
+- it is also an error to use something after it has been freed 
+- the right way:
+    for (p = headl p != NULL; p = q) {
+        q = p->next;
+        free(p);
+    }
+
+7.8.6 Mathematical functions (not a full list)
+<math.h>
+sin(x) - in radians 
+cos(x) - in radians 
+atan2(y,x) - arctangent of y/x, in radians 
+exp(x) - exponents 
+log(x) - natural log (base e) (x>0)
+log10(x) - common log (x>0)
+pow(x,y) - x to the y 
+sqrt(x) - square root 
+fabs(x) - absolute value 
+
+7.8.7 Random Number Generation 
+- rand() computes a sequence of psuedo-random integers 
+- from range 0 to RAND_MAX (definied in <stdlib.h>)
 
