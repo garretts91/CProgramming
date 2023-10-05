@@ -105,30 +105,37 @@ enum BitState BitStateControllerGetBitState(BitStateControllerPtr bitStateContro
 			} else {
 				switchState = Off;
 			}
+			break;
 		case Bit_5:
 			if ((bitStateControllerPtr->bitStates & BIT_FIVE_BIT_MASK) != 0) {
 				switchState = On;
 			} else {
 				switchState = Off;
 			}
+			break;
 		case Bit_6:
 			if ((bitStateControllerPtr->bitStates & BIT_SIX_BIT_MASK) != 0) {
 				switchState = On;
 			} else {
 				switchState = Off;
 			}
+			break;
 		case Bit_7:
 			if ((bitStateControllerPtr->bitStates & BIT_SEVEN_BIT_MASK) != 0) {
 				switchState = On;
 			} else {
 				switchState = Off;
 			}
+			break;
 		case Bit_8:
 			if ((bitStateControllerPtr->bitStates & BIT_EIGHT_BIT_MASK) != 0) {
 				switchState = On;
 			} else {
 				switchState = Off;
-			}									
-		return switchState;
+			}
+			break;									
+		default:
+			break;
 	}
+	return switchState;
 }
