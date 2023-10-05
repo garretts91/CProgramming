@@ -1,4 +1,5 @@
 #include "BitStateController.h"
+
 /*
 1 = 0000 0001
 2 = 0000 0010
@@ -13,6 +14,7 @@
 // & operator resets bits 
 // bit should be the bit position
 // bitState should be the bit state
+
 void BitStateControllerSetBitState(BitStateControllerPtr bitStateControllerPtr, enum Bit bit, enum BitState bitState)
 {
 	switch (bit)
@@ -31,44 +33,52 @@ void BitStateControllerSetBitState(BitStateControllerPtr bitStateControllerPtr, 
 				bitStateControllerPtr->bitStates |= BIT_TWO_BIT_MASK;
 			} else {
 				bitStateControllerPtr->bitStates &= ~BIT_TWO_BIT_MASK;
-			} break;
+			} 
+			break;
 		case Bit_3:
 			if (bitState == On) {
 				bitStateControllerPtr->bitStates |= BIT_THREE_BIT_MASK;
 			} else {
 				bitStateControllerPtr->bitStates &= ~BIT_THREE_BIT_MASK;
-			} break;
+			} 
+			break;
 		case Bit_4:
 			if (bitState == On) {
 				bitStateControllerPtr->bitStates |= BIT_FOUR_BIT_MASK;
 			} else {
 				bitStateControllerPtr->bitStates &= ~BIT_FOUR_BIT_MASK;
-			} break;
+			} 
+			break;
 		case Bit_5:
 			if (bitState == On) {
 				bitStateControllerPtr->bitStates |= BIT_FIVE_BIT_MASK;
 			} else {
 				bitStateControllerPtr->bitStates &= ~BIT_FIVE_BIT_MASK;
-			} break;
+			} 
+			break;
 		case Bit_6:
 			if (bitState == On) {
 				bitStateControllerPtr->bitStates |= BIT_SIX_BIT_MASK;
 			} else {
 				bitStateControllerPtr->bitStates &= ~BIT_SIX_BIT_MASK;
-			} break;
+			} 
+			break;
 		case Bit_7:
 			if (bitState == On) {
 				bitStateControllerPtr->bitStates |= BIT_SEVEN_BIT_MASK;
 			} else {
 				bitStateControllerPtr->bitStates &= ~BIT_SEVEN_BIT_MASK;
-			} break;	
+			} 
+			break;	
 		case Bit_8:
 			if (bitState == On) {
 				bitStateControllerPtr->bitStates |= BIT_EIGHT_BIT_MASK;
 			} else {
 				bitStateControllerPtr->bitStates &= ~BIT_EIGHT_BIT_MASK;
-			} break;											
+			} 
+			break;											
 		default:
+			printf("Please enter a valid argument");
 			break;
 	}
 }
@@ -135,6 +145,7 @@ enum BitState BitStateControllerGetBitState(BitStateControllerPtr bitStateContro
 			}
 			break;									
 		default:
+			printf("Please enter a valid argument");
 			break;
 	}
 	return switchState;

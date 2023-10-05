@@ -1,0 +1,31 @@
+Computer Organization and Design
+The Hardware/Software Interface
+ARM Edition
+Patterson and Hennessy
+
+Ch1 Computer Abstractions and Technology
+1.1 Introduction
+- Moore's Law:
+    - the observation that the number of transistors in an integrated circuit (IC) doubles about every two years
+- WSC - Warehouse Scale Computers 
+- "minimize memory space to make programs fast"
+Primers:
+- How are programs written in a high level language (C) translated into the language of the hardware? 
+    - how does that hardware execute the resulting program?
+- What is the interface between the software and the hardware?
+    - how does software instruct the hardware to perform needed functions?
+- What determines performance of a program? 
+    - how can a programmer improve the performance?
+- What techniques can be used by hardware designers to improve performance?
+- What techniques can be used by hardware designers to improve energy efficiency?
+- What are the reasons for and the consequences of the recent switch from sequential processing to parallel?
+- (Since the first commercial computer in 1951) What great ideas did computer architects come up with that lay the foundation of modern computing?
+- Look out for Understanding Program Performance 
+    - performance of a program depends on the combination of the effectiveness of the algorithms used in the program
+        - the software systems used to create and translate the program into machine instructions
+        - and the effectiveness of the computer in executing those instructions (which may include I/O operations)
+
+
+
+
+
