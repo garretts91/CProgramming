@@ -1,5 +1,4 @@
 #include "BitStateController.h"
-
 /*
 1 = 0000 0001
 2 = 0000 0010
