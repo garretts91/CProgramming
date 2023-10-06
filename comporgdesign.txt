@@ -31,7 +31,11 @@ Design for Moore's Law
 - Resulted from a 1965 prediction of such growth in IC capacity made by Gordon Moore, one of the founders of Intel
 - Computer Architects must anticipate where the technology will be when the design finishes rather than design for where it starts
 Use Abstraction to Simplify Design
-- 
+- Both computer architects and programmers had to invent techniques to make themselves more productive
+- Use abstrations to characterize the design at different levels of representation;
+    - lower-level details are hidden to offer a simpler model at higher levels
+Make the Common Case Fast
+
 
 
 
