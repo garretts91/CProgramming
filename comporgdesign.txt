@@ -25,6 +25,13 @@ Primers:
         - the software systems used to create and translate the program into machine instructions
         - and the effectiveness of the computer in executing those instructions (which may include I/O operations)
 
+1.2 Eight Great Ideas for Computer Architecture
+Design for Moore's Law
+- Integrated circuit resources double every 18-24 months
+- Resulted from a 1965 prediction of such growth in IC capacity made by Gordon Moore, one of the founders of Intel
+- Computer Architects must anticipate where the technology will be when the design finishes rather than design for where it starts
+Use Abstraction to Simplify Design
+- 
 
 
 
