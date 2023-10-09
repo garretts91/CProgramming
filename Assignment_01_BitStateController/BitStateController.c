@@ -1,7 +1,6 @@
 #include "BitStateController.h"
 
 /*
-# Name: Garrett Solomon
 # Date: October 8, 2023
 # Description: This is bitStateContoller.c, 
 	- the intent is to have 8 bits, of which can be set to off or on (BitStateControllerSetBitState)
