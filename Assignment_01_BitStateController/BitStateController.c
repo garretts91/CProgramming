@@ -1,19 +1,23 @@
 #include "BitStateController.h"
+
 /*
-1 = 0000 0001
-2 = 0000 0010
-3 = 0000 0011
-4 = 0000 0100
-5 = 0000 0101
-6 = 0000 0110
-7 = 0000 0111
-8 = 0000 1000
+# Date: October 8, 2023
+# Description: This is bitStateContoller.c, 
+	- the intent is to have 8 bits, of which can be set to off or on (BitStateControllerSetBitState)
+	- the next part of the program (BitStateControllerGetBitState) is supposed to check which bits are on,
+		- and which ones are off and then output that information to the terminal
+	- the files used for this program are: Program.c BitStateController.h and BitStateController.c (this file)
 */
+
 // | operator can set bits
 // & operator resets bits 
 // bit should be the bit position
 // bitState should be the bit state
 
+//  Sets the state of a specific bit in the given BitStateController.
+//  bitStateControllerPtr Pointer to the BitStateController structure.
+//  bit The bit position to set or reset.
+//  bitState The state to set (On) or reset (Off) for the specified bit.
 void BitStateControllerSetBitState(BitStateControllerPtr bitStateControllerPtr, enum Bit bit, enum BitState bitState)
 {
 	switch (bit)
@@ -82,6 +86,9 @@ void BitStateControllerSetBitState(BitStateControllerPtr bitStateControllerPtr, 
 	}
 }
 
+// Gets the state of a specific bit in the given BitStateController.
+// bitStateControllerPtr Pointer to the BitStateController structure.
+// bit gets the bit position that was set or reset.
 enum BitState BitStateControllerGetBitState(BitStateControllerPtr bitStateControllerPtr, enum Bit bit)
 {
 	enum BitState switchState = Off;
