@@ -35,6 +35,29 @@ Use Abstraction to Simplify Design
 - Use abstrations to characterize the design at different levels of representation;
     - lower-level details are hidden to offer a simpler model at higher levels
 Make the Common Case Fast
+- making the common case fast will tend to enhance performance better than optimizing the rare case
+Performance via Parallelism
+- Designs get more performance by computing operations in parallel 
+Performance via Pipelining 
+- pipelining is an implementation technique in which multiple instructions are overlapped in execution
+    - like an assembly line
+Performance via Prediction 
+- In some cases it can be faster on average to guess and start working rather than wait until you know for sure
+    - assuming that the mechanism to recover from a misprediction is not too expensive and your prediction is relatively accurate 
+Heirarchy of Memories 
+- programmers want memory to be fast, large, and cheap
+- memory speed often shapes performance
+- capacity limits the size of problems that can be solved 
+- Heirarchy of memories:
+    - fastest, smallest, and most expensive memory per bit at the top
+    - slowest, largest, and cheapest per bit at the bottom
+- caches give the programmer the illusion that main memory is almost as fast as the top of the heirarchy and nearly as big 
+    - and cheap as the bottom of the heirarchy
+Dependability via Redundancy 
+- computers need to be fast and dependable 
+- redundancy is key!
+
+1.3 Below Your Program 
 
 
 
