@@ -1,0 +1,8 @@
+   742  cd keys
+  743  ls
+  744  chmod 400 linuxlb.pem
+  745  ls
+  746  cp linuxlb.pem ~/
+ 
+ chmod 400 linuxlb.pem
+ 751  ssh -i linuxlb.pem garrett@20.125.102.129

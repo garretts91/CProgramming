@@ -35,6 +35,225 @@ Use Abstraction to Simplify Design
 - Use abstrations to characterize the design at different levels of representation;
     - lower-level details are hidden to offer a simpler model at higher levels
 Make the Common Case Fast
+- making the common case fast will tend to enhance performance better than optimizing the rare case
+Performance via Parallelism
+- Designs get more performance by computing operations in parallel 
+Performance via Pipelining 
+- pipelining is an implementation technique in which multiple instructions are overlapped in execution
+    - like an assembly line
+Performance via Prediction 
+- In some cases it can be faster on average to guess and start working rather than wait until you know for sure
+    - assuming that the mechanism to recover from a misprediction is not too expensive and your prediction is relatively accurate 
+Heirarchy of Memories 
+- programmers want memory to be fast, large, and cheap
+- memory speed often shapes performance
+- capacity limits the size of problems that can be solved 
+- Heirarchy of memories:
+    - fastest, smallest, and most expensive memory per bit at the top
+    - slowest, largest, and cheapest per bit at the bottom
+- caches give the programmer the illusion that main memory is almost as fast as the top of the heirarchy and nearly as big 
+    - and cheap as the bottom of the heirarchy
+Dependability via Redundancy 
+- computers need to be fast and dependable 
+- redundancy is key!
+
+1.3 Below Your Program 
+- the hardware in a computer can really only execute simple, low level instructions
+- several layers of software that interpret o trnaslate high-level operations in to simple computer instructions   
+    - are an example of abstration 
+- application software -> system software -> hardware 
+- systems software:
+    - software that provides services that are commonly useful, including operating systems, compilers, loaders, assemblers
+- operating system:
+    - supervising program that manages the resources of a computer for the benefit of the programs that run on that computer 
+    - handles basic i/o operations 
+    - allocates storage and memory 
+    - providing for protected sharing of the computer among multiple applications using it simultaneously 
+    - Linux, iOS, Windows
+- Compilers: 
+    - perform a vital function:
+        - the translation of a program written in a high level language (C, C++, etc.) into instructions that the hardware can execute
+    - a program that translates high level language statements into assembly language statements 
+- the easiest signals for computers to understand are on and off
+- binary 
+    - binary digits, or bit
+    - binary digit (bit), one of two numbers in base 2 (0, 1) that are the components of information
+- computers are slaves to our commands, which are called instructions 
+    - instruction is a command that computer hardware understands and obeys
+- instructions are a collection of bits 
+- we use numbers for instructions and data 
+- software that translates from symbolic notation to binary was called an assembler 
+- assemblers translates a symbolic version of an instruction into binary 
+    - assembler: a program that translates a symbolic version of instructions into the binary version 
+- assembly language
+    - a symbolic representation of machine instructions 
+- machine language
+    - a binary representation of machine instructions 
+- high level programming language:
+    - a portable language that is composed of words and algebraic notation that can be translated ny a compiler into assembly language 
+- programming languages want to improve programmer productivity
+    - they also let the programmer think in a more natural language
+    - they also allow programs to be independent of the computer on which they were developed
+
+
+1.4 Under the Covers 
+- input device:
+    - a mechanism through which the computer is fed information (like a keyboard)
+- output device 
+    - a mechanism that conveys the result of a computation to a user, such as a display
+- 5 classic components of a computer:
+    - input
+    - output 
+    - memory 
+    - datapath 
+    - control 
+        - these last two are sometimes combined and called the processor 
+- most personal mobile devices use an LCD (liquid crystal display)
+- LCD:
+    - a display technology using a thin layer of liquid polymers that can be used to trnasmit or block light according to whether a charge is applied 
+- most LCD displays use an active matrix that has a tiny transistor switch at each pixel to control current precisely to make sharper images 
+- a RGB mask associated which each dot on the display determines the intensity of the 3 color components in the image 
+    - in a color active matrix LCD, there are three transistor switches at each point 
+- active matrix display:
+    - a LCD display using a transistor to control the transmission of light at each individual pixel 
+- pixel
+    - the smallest individual picture element. Screens are composed of hundreds of thousands to millions of pixels, organized in a matrix
+- bitmap: a matrix of bits 
+- raster refresh buffer / frame buffer
+    - hardware support for graphics that stores the bit map
+- integrated circuits (chips)
+    - a device combining dozens to millions of transistors
+- the processor is the active part of the computer, following the instructions of a program to the letter
+    - it adds numbers, tests numbers, signals i/o etc.
+    - aka CPU 
+- datapath 
+    - the component of the processor that performs arithmetic operations 
+- control   
+    - the component of the processor that commands the datapath, memory, and i/o devices according to the instructions of the program 
+- memory
+    - the storage area in which programs are kept when they are running and that contains the data needed by the running programs 
+- dynamic random access memory (dram)
+    - memory built as an integrated circuit
+    - provides random access to any location
+    - access times are 50 nanoseconds
+    - multiple drams are used together to contain the instructions and data of a program 
+- cache memory 
+    - a small, fast memory that acts as a buffer for a slower, larger memory
+- static random access memory (sram)
+    - memory built as an integrated circuit, but faster and less dense than dram 
+- one of the great ideas to improve design is Abstraction
+- one of the most important abstrations is the interface between hardware and the lowest-level software 
+    - this has a special name:
+        - instruction set architecture (architecture) of a computer 
+        - this includes anything programmers need to know to make a binary machine language program work correctly
+            - including instructions, i/o devices, etc.
+- Architecture:
+    - An abstract interface between the hardware and the lowest-level software that ecnompasses all the information necessary
+        - to write a machine language program that will run correctly, including instructions, registers, memory access, i/o, etc.
+- the combination of the basic instruction set and the OS interface provided for application programmers is called:
+    - the application binary interface (ABI)
+- Application Binary InterfaceL
+    - the user portion of the instruction set plus the operating system interfaces used by app programmers
+    - it defines a standard for binary portability across computers 
+- an instruction set architecture allows computer designers to talk about functions independently from the hardware that performs them 
+    - ex. functions of a digital clock separately from the clock hardware 
+- computer designers distinguish architecture from an implementation of an architecture along the same lines:
+    - an implementation is hardware that obeys the architecture abstraction 
+*** both hardware and software consist of heirarchical layers using abstraction
+    - each lower layer hides details from the level above
+    - instruction set architecture 
+        - enables many implementations 
+- memory inside a computer is volatile 
+    - when it loses power, it forgets
+volatile memory:
+    - storage, such as dram, that retains data only if it is receiving power
+non-volatile memory:
+    - a form of memory that retains data even in the absence of a power source and that is used to store programs between runs 
+main memory / primary memory:
+    - memory used to hold programs while they are running; typically consists of dram in todays computers 
+secondary memory:
+    - nonvolatile memory used to store programs and data between runs; typically consists of flash memory in PMD's and magnetic discs in servers 
+magnetic disc / hard disc 
+    - a form of nonvolatile secondary memory composed of rotating platters coated with a magnetic recording material.
+flash memory:
+    - a nonvolatile semi-conductor memory
+    - cheaper anbd slower than dram buyt more expensive per but and faster than magnetic discs
+- computer networks are the backbone of current computer systems
+- networked computers have several m,ajor advantages:
+    - communication: high speed information exchange 
+    - resource sharing: computers on a network can share i/o devices
+    - nonlocal access: by connecting computers over long distances, users need not be near the computer they are using 
+- networks vary in length and performance 
+- ethernet is probably the most popular type of network 
+local area network (LAN):
+    - a network designed to carry data within a geographically confined area, typically within a building
+wide area network (WAN):
+    - a network that can span a continent 
+    - the backbone of the internet 
+- IEEE 802.11 standards 
+
+1.5 Technologies for Building Processors and Memory 
+transistor:
+    - an on/off switch controlled by an electrical signal 
+integrated circuit (IC):
+    - combines dozens to hundreds of transistors into a single chip 
+very large scale integrated circuit (VLSI):
+    - a device containing hundreds of thousands to millions of transistors
+silicon:
+    - a natural element that is a semiconductor 
+semiconductor:
+    - a substance that does not conduct electricity very well 
+- it is possible to add materials to silicon that allow tiny areas to transform into oen of three devices:
+    - excellent conductors of electricity (using copper or aluminum wire)
+    - excellent insulators from electricity (like plastic sheathing or glass)
+    - areas that can conduct or insulate under specific conditions (as a switch)
+        - transistors fall into this category 
+- a VLSI circuit is just billions of combinations of conductors, insulators, and switches manufactured in a single small package 
+- the manufacturing process is critical to cost of the chips 
+silicon crystal ingot:
+    - a rod composed of a silicon crystal that is between 8 - 12" in diameter and about 12 - 24" long 
+wafer:
+    - a slice from a silicon crystal ingot no more than .1" thick used to create chips 
+    - check page 26 for a diagram 
+defects:
+    - makes it impossible to manufacture a perfect wafer 
+- a wafer is diced into dies (chips)
+die:
+    - the individual rectangular sections that are cute from a wafer (known more informally as chips)
+yield:
+    - the % of good dies from the total # of dies on the wafer 
+- good dies are connectied to the i/o pins of a package, using a process called bonding 
+** check page 28 for integrated circuit cost formulas
+
+1.6 Performance 
+- how do you define performance 
+response time / execution time:
+    - total time required fopr a computer to complete a tast
+        - disc access, memory access, i/o activities, OS overhead, CPU execution time, etc 
+- datacenter managers often care about increasing throughput or bandwidth  
+    - total amount of work done in a given time 
+- throughput and response time 
+- in many computer systems, changing either execution time or throughput often affects the other 
+- to maximize performance, we want to:
+    - minimize response time or execution time for a task 
+    - check page 31 
+- time is the measure of computer performance 
+    - the computer that performs the same amount of work in the least time is the fastest 
+- program execution time is measured in seconds per program
+- time can be defined in different ways 
+- the most straightforward definition:
+    - wall clock time, elapsed time, response time 
+    - these terms mean the total time to complete a task
+CPU execution time (or CPU time)
+    - the time the CPI spends computing computing for the task 
+        - does not include time spent waiting for the IO or running other programs 
+User CPU time:
+    - the CPU time spent in a program itself 
+System CPU time:
+    - the CPU time spent in the operating system perofrmance tasks on behalf of the program 
+
+
+
 
 
 
