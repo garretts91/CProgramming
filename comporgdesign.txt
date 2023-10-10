@@ -252,6 +252,9 @@ User CPU time:
 System CPU time:
     - the CPU time spent in the operating system perofrmance tasks on behalf of the program 
 
+- to improve the performance of a program, one must have a clear definition of what performance metric matters and 
+    - then proceed to find performance bottlenecks by measuring program executionand looking for the likely bottlenecks 
+    
 
 
 
