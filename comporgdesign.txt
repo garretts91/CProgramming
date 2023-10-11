@@ -275,8 +275,17 @@ CPU Time = Instruction Count x CPI x Clock Cycle Time
 or
 CPU Time = (Instruction Count x CPI) / Clock Rate 
 
+The big picture: Time = Seconds/Program = (Instructions/Program) * (Clock Cycles/Instructions) * (Seconds/Clock Cycle)
 
+Components of performance                  |Units of Measure 
+-------------------------------------------|----------------------------------------------
+CPU exection time for a program             Seconds for the program 
+Instruction count                           Instructions executed for the program 
+Clock cycles per instruction (CPI)          Average number of clock cycles per instruction 
+Clock cycle time                            Seconds per clock cycle 
 
+instruction mix 
+- a measure of the dynamic frequency of instructions across one or many programs 
 
 
 
