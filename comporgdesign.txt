@@ -252,6 +252,28 @@ User CPU time:
 System CPU time:
     - the CPU time spent in the operating system perofrmance tasks on behalf of the program 
 
+- to improve the performance of a program, one must have a clear definition of what performance metric matters and 
+    - then proceed to find performance bottlenecks by measuring program executionand looking for the likely bottlenecks 
+- clock cycles
+    - the time for one clock period (usually of the processor clock, which runs at a constant rate)
+- clock period 
+    - the length of each clock cycle 
+
+CPU Performance and Its Factors 
+- CPU execution time for a program = CPU clock cycles for a program * Clock Cycle Time
+- CPU execution time for a program = CPU clock cycles for a program / Clock rate 
+
+- Instruction Performance 
+- execution time depends on the number of instructions in a program
+- execution time equals the number of instructions executed multiplied by by the average time per instruction 
+- clock cycles per instruction (CPI)
+    - average number of clock cycles per instruction for a program or program fragment 
+- CPI provides a way of comparing two different implementations of the identical instruction set architecture
+    - (since the number of instructions executed for a program will be the same)
+
+CPU Time = Instruction Count x CPI x Clock Cycle Time 
+or
+CPU Time = (Instruction Count x CPI) / Clock Rate 
 
 
 
