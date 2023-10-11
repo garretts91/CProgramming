@@ -279,13 +279,69 @@ The big picture: Time = Seconds/Program = (Instructions/Program) * (Clock Cycles
 
 Components of performance                  |Units of Measure 
 -------------------------------------------|----------------------------------------------
-CPU exection time for a program             Seconds for the program 
-Instruction count                           Instructions executed for the program 
-Clock cycles per instruction (CPI)          Average number of clock cycles per instruction 
-Clock cycle time                            Seconds per clock cycle 
+CPU execution time for a program            |Seconds for the program 
+Instruction count                          |Instructions executed for the program 
+Clock cycles per instruction (CPI)         |Average number of clock cycles per instruction 
+Clock cycle time                           |Seconds per clock cycle 
 
 instruction mix 
 - a measure of the dynamic frequency of instructions across one or many programs 
+
+- the performance of a program depends on the algorithm, the language, the compiler, the architecture, and the actualy hardware 
+
+1.7 The Power Wall 
+MIPS - Microprocessor without Interlocked Pipelined Stages
+RISC - reduced instruction set computer
+CMOS - Complimentary Metal Oxide Semiconductor 
+- CMOS is the dominant technology for integrated circuits 
+https://en.wikipedia.org/wiki/Fan-out
+
+- dynamic energy is the primary source of energy consumption in CMOS
+- static energy consumption occurs because of leakage current 
+- leakage is responsible for 40% of energy consumption 
+- power is a challenge for integrated circuits for 2 reasons 
+1. power must be brought in and distributed around the chip 
+    - modern Microprocessors use hundreds of pins just for power and ground 
+2. power is dissipated as heat and needs to be removed 
+    - cooling costs for the chip and surrounding systems is extremely expensive 
+
+1.8 The Sea Change: The Switch from Uniprocessors to Multiprocessors
+- limits in power have caused a dramatic change in the design of Microprocessors
+- processors are cores 
+- Parallelism
+    - pipelining runs programs faster by overlapping execution instructions 
+- you have to balance the load to get desired speed up 
+- care must be taken to reduce communication and synchronization overhead 
+
+1.9 Real Stuff: Benchmarking the Intel Core i7
+- workload:
+a set of programs run on a computer that is either the actual collection of apps run by a user or constructed from real programs to
+approximate such a mix. A typical workload specifies both the programs and the relative frequencies 
+- benchmark:
+a program selected for use in comparing computer performance 
+- make the common case fast:
+you need to know accurately which case is common, so benchmarks play a critical role in computer architecture 
+
+SPEC - System Performance Evaluation Cooperative 
+- SPECratio is good for comparison of computers 
+
+1.10 Fallacies and Pitfalls 
+Amdahls Law - A rule stating that the performance enhancement possible with a given improvement is limited by the amount that the 
+    improved feature is used. It is a quantitative version of the law of diminishing returns 
+MIPS - (The other MIPS) million instructions per second 
+    - a measurement of program execution speed based on the number of millions of instructions. 
+    - MIPS is computed as the instruction count divided by the product of the execution time time 10^6
+
+1.11 Concluding Remarks 
+- abstraction is fundamental to understanding todays computer systems 
+- execution time is the only valid and unimpeachable measure of performance
+- the key hardware technology for modern processors is silicon
+- Moore's Law 
+- Memory Heriarchy 
+- Parallelism 
+
+Ch2 Instructions: Language of the Computer 
+
 
 
 
