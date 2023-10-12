@@ -341,6 +341,174 @@ MIPS - (The other MIPS) million instructions per second
 - Parallelism 
 
 Ch2 Instructions: Language of the Computer 
+- "to command a computer's hardware, you must speak its language"
+- instructions are the words of a computers language 
+- instruction set is its vocabulary 
+ - instruction set: the vocabulary of commands understood by a given architecture
+- ARMv8 is the chosen instruction set 
+- LEGv8 is the teaching subset 
+  - "Lesson Extrinsic Garrulity"
+- 3 other popular instruction sets:
+  - MIPS
+  - ARMv7
+  - Intel x86
+- * find a language that makes it easy to build the hardware and the compiler while maximizing performance and minimizing cost and energy
+- "simplicity of equipment"
+
+- stored program concept:
+  - the idea that instructions and data of many types can be stored in memory as numbers and thus be easy to change,
+    - leading to the stored program computer 
+
+2.2 Operations of the Computer Hardware 
+- Every computer must be able to perform arithmetic 
+- LEGv8 assembly notation:
+  ADD a, b, c
+- this instructs a computer to add b and c -> put their sum in a
+
+ ADD a, b, c 	// the sum of b and c is placed in a
+ ADD a, a, d 	// the sum of b, c, and d is now in a
+ ADD a, a, e 	// the sum of b, c, d, and e is now in a
+
+- it takes three instructions to sum the four variables 
+- Look @ page 64 for a table of the LEGv8 Assembly Language 
+
+- each line of assembly can contain at most, one instruction 
+- comments always terminate at the end of a line
+- every instruction is required to have 3 operands 
+  - this keeps the hardware simple 
+
+Three Underlying Principles of Hardware Design
+1. Simplicity Favors Regularity 
+C example:
+a = b + c;
+d = a - e;
+In assembly:
+ADD a, b, c
+SUB d, a, e
+
+- the compiler translates from C to LEGv8 
+
+C example:
+f = (g + h) - (i + j);
+In assembly:
+ADD t0, g, h 	// temp variable t0 contains g + h
+ADD t1, i, j 	// temp variable t1 contains i + j
+SUB f, t0, t1	// f gets t0 - t1, which is (g + h) - (i + j)
+
+2. Smaller is Faster
+- it is the computers job to associate program variables with registers 
+(from earlier)
+f, g, h, i, j are assigned to registers X19, X20, X21, X22, X23 (respectively)
+The compiled LEGv8 code would be:
+ADD X9, X20, X21 	// register X9 contains g + h
+ADD X10, X22, X23	// register X10 contains i + j
+SUB X19, X9, X10 	//f gets X9 - X10, which is (g + h) - (i + j)
+
+
+2.3 Operands of the Computer Hardware 
+registers: 
+  - special locations build directly into hardware 
+  - the size of a register in LEGv8 architecture is 64 bits
+
+In LEGv8 architecture:
+- groups of 64 bits are called "doubleword"
+- groups of 32 bits are called "word"
+
+- there is typically a limited # of registers on computers (32 registers)
+- there seems to be a correlation between # of registers and clock cycle time 
+
+Memory Operands 
+- the processor can keep only a small amount of data in registers, but computer memory contains billions of data elements
+  - this is why data structures (arrays, structs) are stored in memory 
+data transfer instructions:
+  - commands that move data between memory and registers 
+- to access a word or doubleword in memory, the instruction must supply the memory address 
+- memory is a large, single dimension array
+- address is a value to delineate the location of a specific data element within a memory array 
+load:
+  - data transfer instruction that copies data from memory to a register 
+LDUR:
+  - load register 
+
+*Compiling an Assignment When an Operand Is in Memory 
+C example:
+g = h + a[8]
+
+In assembly:
+LDUR X9, [X22, #8]	// temp reg X9 gets A[8]
+
+ADD X20, X21, X9 	// g = h + a[8] 
+  - the register added to form the address (x22) is called the base register 
+  - the constant in a data transfer instruction (8) is called the offset 
+  - to get the proper byte address, the offset to be added to the base register X22 must be 8x8 or 64, so
+      the load address will select A[8] not A[8/8] 
+
+
+- the address of a doubleword matches the address of one of the8 bytes within the doubleword, and addresses of sequential
+    doublewords differ by 8
+- leftmost is the "big end" byte as the doubleword address vs the right end "the little end"
+- LEGv8 can work as either big-endian or little-endian 
+- order matters only if you access the identical data both as a doubleword and as 8 bytes 
+- byte addressing affects array index 
+- the format of a store is similar to that of a load
+    (load: data transfer instruction that copies data from a memory to a register)
+STUR:
+  - store register 
+
+Alignment Restriction
+- "a requirement that data be aligned in memory on natural boundaries"
+- in many architectures:
+    - words must start at addresses that are multiples of 4 
+    - doublewords must start at addresses that are multiples of 8
+* ARMv8 and Intel x86 do not have alignment restrictions, ARMv7 and MIPS do
+
+Compiling Using Load and Store 
+C example:
+a[12] = h + a[8];
+In assembly:
+LDUR X9, [X22, #64]	// temp reg X9 gets a[8]
+ADD X9, X21, X9 	// temp reg X9 gets h + a[8]
+STUR X9, [X22, #96]	// stores h + a[8] back into a[12]
+
+- load register and store register are the instructions that copy doublewords between memory and registers in the ARMv8 architecture 
+
+spilling registers:
+  - the process of putting less frequently used variables (or those needed later) into memory 
+
+- data accesses are faster if data are in registers instead of memory 
+- data is more useful in a register 
+- registers take less time to access and have higher throughput than memory 
+    - data in registers are faster and easier to use 
+- accessing registers uses less energy than accessing memory 
+- to achieve the highest performance and conserve energy, an instruction set architecture must have enough registers, and
+    compilers must use registers efficiently 
+
+Constant or Immediate Operands 
+Assembly Ex:
+LDUR X9, [X20, AddrConstant4]	// X9 = constant 4
+ADD X22, X22, X9 		// X22 = X22 + X9 (X9 == 4)
+
+add immediate -> ADDI
+Assembly Ex:
+ADDI X22, X22, #4		// X22 = X22 + 4
+
+register XZR is hard wired to the value 0 (corresponds to register number 31)
+
+2.4 Signed and Unsigned Numbers 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
