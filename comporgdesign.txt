@@ -504,14 +504,28 @@ register XZR is hard wired to the value 0 (corresponds to register number 31)
 LEGv8 
     - most significant bit (leftmost)
     - least significant bit (rightmost)
-
-
-
-
-
-
-
-
+- the LEGv8 doubleword is 64 bits long (2^64)
+- positive numbers are unisgned numbers 
+- if the number that is the proper result of such operations cannot be represented by these rightmost hardware bits, overflow occurs 
+- sign and magnitude 
+    - was abandoned 
+- leading zeroes mean positive, leading ones mean negative 
+- twos compliment representation
+- every computer today uses twos compliment representation for signed numbers 
+- the msb in twos compliment will always be 1
+    - this is called the sign bit 
+    - the sign bit is multiplied by -2^63, and the rest of the bit are multiplied by positive versions of their respective base values 
+- overflow occurs when the leftmost retained bit of the binary bit pattern is not the same as the infinite number of digits to the left (the sign bit is incorrect)
+    - a zero on the left of the bit pattern when the number is negativve or a 1 when the number is positive 
+- signed vs unsigned applies to loads as well as arithmetic
+- the function of a signed load is to copy the sign repeatedly to fill the rest of the register 
+    - this is called sign extension 
+    - the purpose is to place a correct representation of the number within that register 
+- unsigned loads fill with 0's to the left of the data, since the number represented by the bit pattern is unsigned 
+two types of byte loads:
+load byte (LDURB) treats the byte as an unsigned # and thus zero extends to fill the leftmost bits of the register 
+    - this is used extensively for byte loads 
+load byte signed (LDURSB) works with signed integers 
 
 
 
