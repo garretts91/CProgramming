@@ -527,8 +527,90 @@ load byte (LDURB) treats the byte as an unsigned # and thus zero extends to fill
     - this is used extensively for byte loads 
 load byte signed (LDURSB) works with signed integers 
 
+- sign extension
+     a process used to preserve the sign (+ or -) of a value when converting it from a smaller data type to a larger one,
+    typically when widening a value 
+- in assembly, sign extension is important when you move data between registers or momeory locations of different sizes
 
+- twos compliment 
+Two's complement is a mathematical representation and encoding method used to represent both positive and negative integers in binary form. 
+It's the most common method for representing signed integers in modern computer systems. 
+Two's complement has several advantages, including the fact that it simplifies arithmetic operations like addition and subtraction.
 
+Here's how two's complement works:
+1. **Positive Numbers**:
+   In two's complement, positive numbers are represented in the same way as in standard binary. 
+   The binary representation of a positive integer is the same as its standard binary representation. 
+   For example, the decimal number 5 is represented as `00101` in five bits in two's complement.
+
+2. **Negative Numbers**:
+   Negative numbers are represented by taking the two's complement of their absolute values. 
+   To find the two's complement of a negative number, follow these steps:
+
+   a. Write the positive binary representation of the absolute value.
+   b. Invert (flip) all the bits (change 0s to 1s and 1s to 0s).
+   c. Add 1 to the inverted binary value.
+
+   For example, let's say we want to represent -5 in five bits:
+
+   - The positive binary representation of 5 is `00101`.
+   - Inverting the bits gives us `11010`.
+   - Adding 1 to the inverted value, we get `11011`.
+
+   So, -5 is represented as `11011` in five bits in two's complement.
+
+3. **Advantages**:
+   Two's complement offers several advantages:
+
+   - It allows for a straightforward representation of both positive and negative integers.
+   - Arithmetic operations like addition and subtraction can be performed using standard binary addition and subtraction algorithms without needing special rules for signs. 
+        This simplifies hardware design and execution.
+   - There's a clear zero representation. 
+        In two's complement, zero is represented as all bits set to 0, and there is only one representation for zero.
+
+4. **Overflow**:
+   One thing to be aware of in two's complement is overflow. 
+   Overflow occurs when the result of an arithmetic operation is too large (positive) or too small (negative) to be represented in the given number of bits. 
+   Detecting and handling overflow is an important consideration in programming and hardware design.
+
+In summary, two's complement is a binary representation and encoding scheme that simplifies the handling of signed integers,
+     allowing for straightforward arithmetic operations and a clear representation of zero. 
+     It's widely used in modern computer systems and is an essential concept for understanding binary arithmetic.
+
+Ones Comliment 
+- it is used to mean the inversion of every bit in a pattern 
+
+Biased notation
+- a notation that represents the most negative value by 00
+*** need clarity
+
+2.5 Representing Instructions in the Computer 
+- instructions are kept in the computer as a series of high and low electronic signals and may be represented as Numbers
+- each piece of an instruction can be considered as an individual number, and placing the numbers side by side forms the instruction 
+- the 32 registers of LEGv8 are just referred to by their numbers, 0-31
+- all LEGv8 instructions are 32 bits long 
+
+instruction format 
+- a form of representation of an instruction composed of fields of binary numbers 
+
+machine language:
+- binary representation used for communication within a computer system 
+
+opcode:
+- basic operations of the instruction 
+- the field that denotes the operation and format of an instruction 
+
+rm:
+- the second register source operand 
+
+shamt:
+- shift amount 
+
+rn:
+- the first register source operand 
+
+rd:
+- the register destination operand. it gets the result of the operation 
 
 
 
