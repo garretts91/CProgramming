@@ -643,6 +643,8 @@ Refer back to the Desgin Principles!
 
 - the formats are distinguished by the values in the fist field (opcode) so that the hardware knows how to treat the rest of the instruction  
 
+2.6 Logical Operations 
+
 
 
 
