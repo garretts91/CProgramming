@@ -377,7 +377,7 @@ Ch2 Instructions: Language of the Computer
 - every instruction is required to have 3 operands 
   - this keeps the hardware simple 
 
-Three Underlying Principles of Hardware Design
+Three Underlying Principles of Hardware Design (Design Principles)
 1. Simplicity Favors Regularity 
 C example:
 a = b + c;
@@ -403,6 +403,19 @@ The compiled LEGv8 code would be:
 ADD X9, X20, X21 	// register X9 contains g + h
 ADD X10, X22, X23	// register X10 contains i + j
 SUB X19, X9, X10 	//f gets X9 - X10, which is (g + h) - (i + j)
+
+3. Good Design Demands Good Compromises 
+- the Compromise chosen by the LEGv8 designers is to keep all instructions the same length 
+    - this requires distinct instruction formats for different kinds of instructions 
+- R-type (R-format) register type 
+    - the opcode is typically followed by (3) register operands 
+    - the instructions are often used for operations that include 2 source registers, perform an operation on those registers,
+        and then store the result in a destination register 
+    - it has a fixed length and allows for fast execution 
+- D-type (D-format) data transfer type 
+    - refers to the IF used for data transfer instructions (load and store operations)
+    - typically includes fields for specifying the operation (load or store), source of destination register,
+        memory address (or an offset) 
 
 
 2.3 Operands of the Computer Hardware 
@@ -612,6 +625,23 @@ rn:
 rd:
 - the register destination operand. it gets the result of the operation 
 
+instruction register:
+- an instruction register (IR) is a critical component of the cpu 
+- it holds the current instruction that the cpu is executing 
+- the cpu fetches instructions from memory (typically in a programs machine code or assembly lang format) and loads them into the instruction register before execution 
+- fetch -> decode -> execute -> increment pc 
+
+Refer back to the Desgin Principles!
+
+- Note that in a load register instruction, the Rt field specifies the destination register 
+
+- immediate or R-type format (Page 85)
+
+*Multiple formats compliate the hardware, but we can reduce complexity by keeping the formats similar 
+- ex., the last two fields of all three formats are the identical size and almost the same names 
+- the opcode field is the same size in 2 of the 3 formats 
+
+- the formats are distinguished by the values in the fist field (opcode) so that the hardware knows how to treat the rest of the instruction  
 
 
 
