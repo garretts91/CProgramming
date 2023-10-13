@@ -495,6 +495,16 @@ ADDI X22, X22, #4		// X22 = X22 + 4
 register XZR is hard wired to the value 0 (corresponds to register number 31)
 
 2.4 Signed and Unsigned Numbers 
+- "a single digit of a binary number is the "atom" of computing"
+- binary digits = bits;
+- high-low, on-off, true-false, 1-0
+- d x base^i 
+    where i starts at zero and moves right to left 
+- bits are numbered from right to left in a doubleword 
+LEGv8 
+    - most significant bit (leftmost)
+    - least significant bit (rightmost)
+
 
 
 

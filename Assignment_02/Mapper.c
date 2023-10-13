@@ -43,10 +43,13 @@ void OutputAsHexCharacters(unsigned int value)
 
     for (int count = 0; count < NIBBLE_COUNT; count++) {
 		printf("Current Mask: 0x%08X\n", mask); // Print the current mask
+
         unsigned int nibble = (value & mask) >> (BITS_PER_NIBBLE * (NIBBLE_COUNT - 1 - count));
 		printf("The value of nibble is: 0x%02X\n", nibble);
+
         char hexChar = MapNibbleToHexCharacter(nibble);
         printf("Hexadecimal Character: %c\n", hexChar);
+		
         mask >>= BITS_PER_NIBBLE;
     }
 
