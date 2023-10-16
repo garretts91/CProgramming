@@ -39,6 +39,7 @@ significance    128     64      32      16      8       4       2       1
 8. reading and writing bits can become a bit tedious so computer scientists have developed a notation to represent groups of bits called the hex number system
 - base 16 system 
 - 0-9, A-F 
+
 Hex     Decimal     Binary
 0       0           0000
 1       1           0001
@@ -56,4 +57,3 @@ C       12          1100
 D       13          1101
 E       14          1110
 F       15          1111
-
