@@ -50,7 +50,7 @@ void OutputAsHexCharacters(unsigned int value)
         unsigned int nibble = (value & mask) >> (BITS_PER_NIBBLE * (NIBBLE_COUNT - 1 - count));
 		// printf("The value of nibble is: 0x%02X\n", nibble);
 
-		// map and print the nibble to its hex character
+		// map and print the nibble to its corresponding hex character
         char hexChar = MapNibbleToHexCharacter(nibble);
         printf("Hexadecimal Character: %c\n", hexChar);
 		
