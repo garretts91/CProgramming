@@ -1,17 +1,17 @@
 ﻿// Write a program that prompts the user for an unsigned integer number.
-//  An unsigned integer is allocated 4 bytes. With 8 bits per byte, and 4 bits per
+// An unsigned integer is allocated 4 bytes. With 8 bits per byte, and 4 bits per
 // nibble, an unsigned integer has 8 nibbles.
-//  Create a function named OutputAsHexCharacters. This function receives an
+// Create a function named OutputAsHexCharacters. This function receives an
 // unsigned integer and returns void. The prototype is shown below. The
 // function should:
 // o Bitwise-mask each 4-bit nibble in the unsigned integer parameter.
 // o Pass each 4-bit nibble to a function named MapNibbleToHexCharacter.
-//  MapNibbleToHexCharacter receives the 4-bit nibble as an unsigned integer
+// MapNibbleToHexCharacter receives the 4-bit nibble as an unsigned integer
 // and returns an unsigned char. The prototype is shown below. The function
 // should:
-// o Determine the equivalent hexadecimal character and return the
+// Determine the equivalent hexadecimal character and return the
 // hexadecimal character.
-// o Hint: Try using the 4-bit nibble as an index into an array of characters,
+// Hint: Try using the 4-bit nibble as an index into an array of characters,
 // where each character is the hexadecimal representation of the 4-bit
 // nibble. This isn’t strictly necessary, but fun to try!
 // we want the output to look like:
