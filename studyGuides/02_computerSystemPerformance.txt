@@ -1,0 +1,55 @@
+Computer System Performance 
+
+1. A programs execution time is determined by the following factors:
+- the number of CPU clock cycles it takes to execute a program instruction (given as cycles per instruction (CPI))
+    - the CPI is determined by the design of the CPU and the CPU's ISA (Instruction Set Architecure)
+- the number of program instructions
+    - determined by the CPU's ISA, the particular compiler used to compile, and the compiler settings 
+- CPU clock speed 
+
+2. CPU clock speed is measured in cycles-per-second (CPS) termed Hertz (Hz): 1 Hz = 1 Cycle per second 
+- CPU clock speed represents the frequency of a clock tick 
+- the frequency is the inverse of the clock period:
+    - Frequency = 1 / Clock Period 
+    - Clock Period = 1 / Clock Frequency 
+
+3. CPU processor speeds are typically measured in megahertz (MHz) or gighertz (GHz)
+    - 1 MHz = 1,000,000 Hz (1 million cycles per second)
+        - Clock Period = 1 / Frequency = 1 / 1,000,000 = 1 x 10^-6 = 1 microsecond 
+    1 Ghz = 1,000,000,000 Hz (1 billion cycles per second) 
+        - Clock Period =  1 / Frequency = 1 x 10^-9 = 1 nanosecond 
+
+4. A typical specification for a CPU's clock speed 
+    - processor 11th gen intel(R) Core(TM) i5-1155G7 @ 2.50GHz
+
+5. A programs execution time is given by the general performance equation:
+    - CPU Time = seconds / program = (instructions / program) * (average cycles / instruction) * (seconds / cycle)
+
+6. CPU throughput can be improved by:
+- reducing the programs instruction count 
+- reduce the cycles per instruction 
+- reducing the clock cycle by increasing the clock speed 
+
+7. Basic computer performance equation is useful in RISC vs CISC
+- RISC (Reduced Instruction Set Computer)
+- CISC (Complex Instruction Set Computer)
+- (In general) to achieve better performance, 
+    - RISC machines reduce the the number of cycles per instruction 
+    - CISC machine reduce the number of instructions per program 
+
+8. CPU efficiency is not the sole factor in overall system performance
+- memory and I/O performance are also important 
+
+9. performance benchmarking
+- the science of making objective assessments concerning the performance of one system over another 
+- price-performance ratios can be derived from standard benchmarks 
+- (troublesome issue) there is no definitive benchmark that can tell you which system will run your applications fastest 
+    - (using the least wall clock time) for the least amount of money 
+
+10. Equating CPU clock speed with computer system performance is problematic 
+- Saying System A is better than B because A runs at 1.4Ghz and B runs at 900MHz is only valid when:
+    - ISA of A and B are identical 
+- with different ISA's, it is possible that both systems could obtain identical results within the same amount of wall clock time 
+
+11. The performance of a computing system is measured by the execution time of standardized system performance measurement programs 
+
