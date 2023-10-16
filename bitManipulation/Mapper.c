@@ -16,11 +16,14 @@ void OutputAsHexCharacters(unsigned int value)
     for (int count = 0; count < NIBBLE_COUNT; count++) {
         // shiftAmount calculates the index of the nibble to extract from value
         // shifts the nibbles from most significant bit to least significant bit (since count = 0 in for loop and we are count++)
+        printf("Current Mask: 0x%08X\n", mask); // Print the current mask
         int shiftAmount = (NIBBLE_COUNT - 1 - count) * BITS_PER_NIBBLE;
         unsigned int nibble = (value & mask) >> shiftAmount;
         printf("The value of nibble is: 0x%02X\n", nibble);
+        
         char hexChar = MapNibbleToHexCharacter(nibble);
         printf("Hexadecimal Character: %c\n", hexChar);
+        
         fullMask |= (nibble << shiftAmount); // Accumulate the nibbles into the fullMask
         mask >>= BITS_PER_NIBBLE;
     }
