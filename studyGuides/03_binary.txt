@@ -1,0 +1,59 @@
+The Binary Number System 
+
+1. binary numbers are represented as a sequence of binary digits called bits 
+- a bit is the most basic unit of data that computers process 
+- a bit can represent one of two values, 0 or 1
+
+2. a computer is an electronic machine that consists of digital circuits 
+- these circuits process groups of bits 
+- in a digital circuit, bits can represent a state of ON or OFF 
+- ON represents a high voltage level
+- OFF represents a low voltage level 
+
+3. a group of 8 bits is called a byte 
+- a byte is the smallest addressable unit of computer storage
+- the term addressable means that a particular byte can be retreieved according to its location in memory 
+
+4. a group of 4 bits is called a nibble
+- bytes consist of 2 nibbles: a high order nibble and a low order nibble 
+
+5. a word is a contiguous group of byte
+- words are any number of bits or bytes 
+- word sizes of 16, 32, or 64 bits are most common 
+- in a word-addressable system, a word is the smallest addressable unit of storage 
+- many CPU's dont address memory as small as bytes 
+    - ex. a 32-bit microprocessor is designed to address memory in 4-byte intervals 
+
+6. the decimal system is a base 10 system 
+- uses powers of 10 for each position in a number 
+- binary is a base 2 system 
+- uses powers of 2 for each position in a number 
+- any integer quantity can be represented exactly using any base (or radix)
+    - radix: In a positional numeral system, the radix or base is the number of unique digits, including the digit zero, used to represent numbers
+        ex. for the decimal system the radix is ten, because it uses the ten digits from 0 through 9
+
+7. base 10 number 115 is represented in binary as 01110011
+bits            0       1       1       1       0       0       1       1
+significance    128     64      32      16      8       4       2       1
+
+8. reading and writing bits can become a bit tedious so computer scientists have developed a notation to represent groups of bits called the hex number system
+- base 16 system 
+- 0-9, A-F 
+Hex     Decimal     Binary
+0       0           0000
+1       1           0001
+2       2           0010   
+3       3           0011
+4       4           0100
+5       5           0101
+6       6           0110
+7       7           0111
+8       8           1000
+9       9           1001
+A       10          1010
+B       11          1011
+C       12          1100
+D       13          1101
+E       14          1110
+F       15          1111
+
