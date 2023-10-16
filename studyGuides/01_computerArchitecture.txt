@@ -1,8 +1,8 @@
 Computer Architecure 
 * Check CPU diagram 
 
-primary care initial appointment 
 
+1. Primary Components of a Computer
 Central Processing Unit (CPU)
 - the CPU is the primary component that performs computer program execution 
 - principle components:
@@ -32,7 +32,66 @@ Secondary Memory
 Input-Output (I/O) Subsystem
 - I/O subsystem includes the address bus and data bus systems for transferring data to and from external devices 
 - Data is transmitted over the I/O subsystem to:
-    - 
+    - Read (load) data from main memory into the CPU registers 
+    - Write (store) data from the CPU registers to main memory 
+    - read data from external input devices 
+    - write data to external output devices 
+    - the primary external input and output devices are the following:
+        - secondary storage devices such as SSD's and HDD's 
+        - input devices (keyboard and mouse)
+        - output devices (monitor)
+
+2. Primary Purpose of the CPU 
+The primary purpose of the CPU is to fetch program instructions from main memory, decode instructions, and execute the instructions 
+- this is termed the fetch-decode-execute process 
+- the CPU fetches an instruction from memory using the program counter (PC) to determine the memory address of the instruction 
+    - the instruction is loaded into the Instruction Register (IR)
+- to decode and execute the instruction, the control unit (CU) generates control signals based on the CU's microprogram 
+- the CU determines which actions to carry out according to the instructions and values in status registers 
+- the CPU perofrms sequenced operations according to signals proveded by the CU 
+- See: Block Diagram of a Control Unit (CU) 
+
+3. The normal execution of a program is altered when an even of higher-priority occurs
+- CPU is alerted to such an event through an interrupt 
+- interrupts can be triggered by I/O requests, arithmetic errors (divide by 0), or when an invalid instruction is encountered
+- each interrupt is associated with a procedure that directs the actions of the CPU when an interrupt occurs 
+- non-maskable interrupts are high-priority interrupts that cannot be ignored 
+
+4. the CPU shares data with other system components by way of the data bus 
+- buses consist of data lines, control lines, and address lines 
+- data lines convey data (bits and bytes) from one device to another 
+- control lines determine the direction of data flow and coordinates device access to the data bus 
+- address lines determine the location of the source or destination of the data 
+- the CPU controls the address lines and initiates control signals that:
+    - enable data to be read from main memory to the CPU's register set 
+    - enable data to the written from the CPU's register set to main memory 
+- See: Picture from the study guide 
+
+5. a computer system's byte ordering determines whether the system is little endian or big endian 
+    - ex. a two-byte integer may be stored so that the least significant byte (LSB) is followed by the most significant byte (MSB) or vice-versa
+- little-endian machines store the LSB first (at the lower memory address) followed by the MSB 
+- big-endian machines store the MSB first (at the lower memory address) followed by the LSB 
+- ex. consider the hex number 0x12345678 
+Address                 00      01      10      11
+Big Endian              12      34      56      78
+Little Endian           78      56      34      12
+
+- ex. consider a computer that processes 32-bit integers
+values: 0xABCD1234, 0x00FE4321, 0x00000010 would be stored sequentially in memory (starting at address 0x200)
+
+Address     Big Endian      Little Endian
+0x200       AB              34
+0x201       CD              12
+0x202       12              CD
+0x203       34              AB 
+0x204       00              21
+0x205       FE              43
+0x206       43              FE 
+0x207       21              00
+0x208       00              10
+0x209       00              00
+0x20A       00              00  
+0x20B       10              00
 
 
 
