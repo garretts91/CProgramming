@@ -1,0 +1,38 @@
+Computer Architecure 
+* Check CPU diagram 
+
+primary care initial appointment 
+
+Central Processing Unit (CPU)
+- the CPU is the primary component that performs computer program execution 
+- principle components:
+    - Control Unit (CU) 
+        - the CU is controlled by the system clock that synchronizes the activities of the CPU
+        - a fixed number of clock cycles are required to execute each instruction 
+        - clock frequency (measured in megahertz or gighertz) determines the speed of instruction execution 
+    - Register Set (RS)
+        - register set stores data and status information that is used by the CU and ALU (arithmetic and logical unit)
+        - (depending on the CPU architecture) a typical register set contains 16-32 registers 
+    - Arithmetic Logic Unit (ALU)
+        - carries out logicalm and arithmetic operations as directed by the Control Unit (CU)
+    - Datapath
+        - directs flow of data through the CPU's registers and arithmetic logical unit (ALU)\
+
+Main Memory
+- to store program instances loaded by the operating from secondary storage devices 
+- to store data used by the program instances 
+
+Secondary Memory 
+- external storage devices that are used to store files 
+- the files include:
+    - executable program files 
+    - data files and system software files 
+        - system software files include: compilers, assemblers, and linkers
+
+Input-Output (I/O) Subsystem
+- I/O subsystem includes the address bus and data bus systems for transferring data to and from external devices 
+- Data is transmitted over the I/O subsystem to:
+    - 
+
+
+

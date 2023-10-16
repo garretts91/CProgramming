@@ -39,4 +39,61 @@ C program
         - Debug Info: for associating with the source code 
 
 4. The OS Loader performs the following steps to execute a program:
+    1. Reads program image file from disc
+    2. Reads program headers to determine segment sizes
+        - text (code) segment 
+        - initialized data segment
+        - uninitialized data segment
+    3. Allocates the text segment, initialized/ uninitialized data segment, stack segment, and heap segment in main memory 
+    4. Copies the text and initialized data segment info the allocated text and initialized segments 
+    5. Initializes registers, including the program counter (PC)
+    6. Jumps to the programs startup routine 
+    7. Copies command-line arguments to registers 
+    8. Invokes the main function 
+- See: the picture of the memory layout of C 
+
+5. Assemblers are the simplest of all programming tools 
+- they translate mnemonic instructions to machine code 
+- most assemblers carry out this translation in two passes over the source code
+    - first pass: partially assembles the code and builds the symbol table 
+    - second pass: completes the instructions by supplying values stores in the symbol table 
+    - builds symbol table, populates symbol table (?)
+
+6. The output of most assemblers is a stream of relocatable binary code 
+- in relocatable code:
+    - operand addresses are relative to where the OS chooses to load the program 
+- when relocatable code is loaded for execution, special registers provide the base addressing 
+    - addresses specified within the program are interpreted as offsets from the base address 
+- absolute code (non-relocatable code) is most suitable for device and OS control programming 
+
+7. Binding is the process of assigning physical addresses to program variables
+- binding can occur at compile, load, or run time 
+    - compile time binding gives absolute code 
+    - load time binding assigns physical addresses as the program is loaded into memory 
+    - run time binding requires a base register to carry out address mapping 
+
+8. (On most systems) binary instructions must pass through a link editor (linker) to create an executable module 
+- link editors incorporate various binary routines into a single executable file as called for by a programs external symbols 
+
+9. (like assemblers) link editors perform two passes:
+    - the first pass creates a symbol table 
+    - the second pass resolves references to the values in the symbol table 
+
+10. Dynamic Linking is when the link editing is delayed until load time or run time 
+- external modules are loaded from Dynamic Link Libraries (DLL's)
+- load time dynamic linking slows down program loading but calls to the DLL are faster 
+- run-time dynamic linking occurs when an external module is first called (causes slower execution time)
+- dynamic linking makes program modules smaller but carries the risk that the programmer may not have control over the DLL
+
+11. Compilers bridge the gap between higher level language and machine binary instructions 
+- most compilers effect this translation in a six-phase process 
+    - the first three are analysis phases 
+    - the last three are synthesis phases 
+- through this modularity, compilers can be written for various platforms by rewriting only the last two phases 
+    1. lexical analysis extracts tokens (e.g. reserved words and variables)
+    2. syntax analysis (parsing) checks statement construction 
+    3. semantic analysis checks data types and validity of operators 
+    4. intermediate code generation creates three address code to facilitate optimization and translation
+    5. optimization creates assembly code while taking into account architectural features that can make the code efficient 
+    6. code generation creates binary code from the optimized assembly code 
 
