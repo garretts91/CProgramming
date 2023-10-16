@@ -1,0 +1,42 @@
+Program Compilation, Linking, and Execution
+- program instructions and data are stored in memory
+    - "the stored program concept"
+- program instructions and program data are both represented as binary data in the computers memory 
+
+2. Programming tools carry out the mechanics of program compilation and Linking
+- C source code compilation and linking process:
+1. The Compiler is executed. 
+    - The compiler input is the C source code files 
+    - The output from the compiler is the assembly code files 
+2. The Assembler translates the program into machine instructions 
+    - assembler input is the assembly source code files 
+    - the output of the assembler is the object code files 
+3. The Linker (Link Editor) links the object code files together (along with object library code routines)
+    - all unresolved references in any of the object code files are resolved by the link editor 
+    - the output from the linker is the executable file 
+* CALL *
+    - Compiler 
+    - Assembler
+    - Linker 
+    - Loader 
+
+C program 
+    Compiler 
+        Assembly Language Program 
+            Assembler 
+                Object: Machine Language Model / Object: Library Routing (Machine Language)
+                    Linker 
+                        Executable: Machine Language Program 
+                            Loader 
+                                Memory 
+
+    - The object files provides information for building a complete program from the following pieces:
+        - Header: described contents of object module
+        - Text Segment: translated instructions 
+        - Static Data Segment: data allocated for the life of the program 
+        - Relocation Info: for contents that depend on absolute location of loaded program 
+        - Symbol Table: global definitions and external references
+        - Debug Info: for associating with the source code 
+
+4. The OS Loader performs the following steps to execute a program:
+
