@@ -46,9 +46,9 @@ void OutputAsHexCharacters(unsigned int value)
 		// printf("Current Mask: 0x%08X\n", mask); // Print the current mask
 
 		// extract a nibble from the input value using a bit mask
-		// shift that nibble from the most significant to least significant position
+		// shift that nibble from the most significant to least significant position (left to Right)
         unsigned int nibble = (value & mask) >> (BITS_PER_NIBBLE * (NIBBLE_COUNT - 1 - count));
-		// printf("The value of nibble is: 0x%02X\n", nibble);
+		// printf("The value of nibble is: 0x%02X\n", nibble); // Print the nibble value
 
 		// map and print the nibble to its corresponding hex character
         char hexChar = MapNibbleToHexCharacter(nibble);
