@@ -1,3 +1,68 @@
 Binary Arithmetic - Addition and Subtraction 
 
-1.
+1. the simplicity of the binary number system makes it possible for digital circuits to carry out Arithmetic operations
+- adding binary numbers is similar in concept to adding decimal numbers 
+
+2. to represent signed integers, computer systems allocate the high-order bit to indicate the sign of a number 
+- the high-order bit is the leftmost bit 
+- it is also called the most significant bit 
+- 0 is used for a positive number, 1 for a negative number 
+ - the remaining bits contain the value 
+
+ 3. there are three ways in which signed binary integers may be expressed:
+ - signed magnitude
+ - one's compliment 
+ - two's compliment 
+
+ 4. in an 8-bit word, signed magnitude representation places the absolute value of the number in the 7 bits to the right of the sign bit 
+ - ex. 8-bit signed magnitude representation 
+    - +3 is: 00000011
+    - -3 is: 10000011
+- signed magnitude representation is easy for people to understand, but it requires complicated computer hardware 
+- a disadvantage of signed magnitude is that is allows two different representations for zero, +0 and -0
+- for these reasons (among others) computer systems employ compliment systems for numeric value representation
+
+5. One's Compliment amount to little more than flipping the bits of a binary number 
+- ex. using 8-bit ones compliment representation 
+    - +3 is: 00000011
+    - -3 is: 11111100
+- in ones compiment (as with signed magnitude) negative values are indicated by a 1 in the high order bit 
+- compliment systems are useful because they eliminate the need for subtraction 
+
+6. two's compliment representation 
+- if the number is positive, convert it to binary
+- if the number is negative, use the positive number, compute the one's compliment of the number, and add 1
+- ex. compute the binary representation of -3 as an 8-bit binary value
+    - positive representation of -3: 00000011
+    - compute the one's compliment (flip the bits): 11111100
+    - add 1: 11111101
+
+7. when using any finite number of bits to represent a number, we always run the risk of our calculations becoming too large OR 
+    too small to be stored in the computer 
+- while we cant always prevent overflow, we can always detect overflow 
+- consider adding the (decimal) values of 111 and 230 in binary form
+- adding 230 + 111 = 341
+    because the largest unsigned positive value that can be represented using 1 byte is 255, an arithmetic overflow occurs 
+- this arithmetic overflow can be seen by adding the bits in the 8th column.
+- here we are adding a 1 in the carry bit to the 1 in number two. the result is 0 and a carry.
+- since there arent any more columns, this carry results in an arithmetic overflow 
+
+Carry           1   1   0   1   1   1   0
+Number One      0   1   1   0   1   1   1   1
+Number Two      1   1   1   0   0   1   1   0
+Sum             0   1   0   1   0   1   0   1
+Significance    128 64  32  16  8   4   2   1
+
+- when computing signed two's compliment arithmetic, overflow occurs if the sign bit carry-in and the sign bit carry-out differ 
+- if the carry into the sign bit equals the carry out of the sign bit, no overflow has occurred 
+
+Expression          Result      Carry?      Overflow?       Correct Result?
+0100 + 0010         0110        no          no              yes
+0100 + 0110         1010        no          yes             no 
+1100 + 1110         1010        yes         no              yes 
+1100 + 1010         0110        yes         yes             no  
+
+- note: signed number overflow means nothing in the context of unsigned numbers, which set a carry flag instead of an overflow flag 
+    - if a carry out of the leftmost bit occurs with an unsigned number, overflow has occurred 
+    - carry and overflow occur independently of each other 
+
