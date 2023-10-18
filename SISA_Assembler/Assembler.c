@@ -37,7 +37,7 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
 
         if (cmp_result == 0)
         {
-            //MOVI R0, b00000001
+            //MOVI R0, b00000001 
 
             char* reg_num = strtok(NULL, ",");
             char* prefix_removal = strtok(NULL, "b");
@@ -54,7 +54,17 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //ADD R2, R0, R1
+        char* reg_output = strtok (NULL, ",");
+        char* reg_output2 = strtok (NULL, ",");
+        char* reg_output3 = strtok (NULL, ",");
+        char* immediate = strtok (NULL, "\0");
 
+        fprintf(fptr_write, OPCODE_ADD);
+        write_register_code(reg_output, fptr_write);
+        write_register_code(reg_output2, fptr_write);
+        write_register_code(reg_output3, fptr_write);
+        fprintf(fptr_write, "%s", immediate);
+        fprintf(fptr_write, "\n");
             
         }
 
@@ -63,8 +73,17 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //SUB R2, R0, R1
+        char* reg_output = strtok (NULL, ",");
+        char* reg_output2 = strtok (NULL, ",");
+        char* reg_output3 = strtok (NULL, ",");
+        char* immediate = strtok (NULL, "\0");
 
-            
+        fprintf(fptr_write, OPCODE_SUB);
+        write_register_code(reg_output, fptr_write);
+        write_register_code(reg_output2, fptr_write);
+        write_register_code(reg_output3, fptr_write);
+        fprintf(fptr_write, "%s", immediate);
+        fprintf(fptr_write, "\n");
         }
 
         cmp_result = strcmp(mnemonic, CMP);
@@ -72,7 +91,17 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //CMP R3, R1, R2
+        char* reg_output = strtok (NULL, ",");
+        char* reg_output2 = strtok (NULL, ",");
+        char* reg_output3 = strtok (NULL, ",");
+        char* immediate = strtok (NULL, "\0");
 
+        fprintf(fptr_write, OPCODE_CMP);
+        write_register_code(reg_output, fptr_write);
+        write_register_code(reg_output2, fptr_write);
+        write_register_code(reg_output3, fptr_write);
+        fprintf(fptr_write, "%s", immediate);
+        fprintf(fptr_write, "\n");
            
         }
 
@@ -81,8 +110,17 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //MUL R2, R0, R1
+        char* reg_output = strtok (NULL, ",");
+        char* reg_output2 = strtok (NULL, ",");
+        char* reg_output3 = strtok (NULL, ",");
+        char* immediate = strtok (NULL, "\0");
 
-            
+        fprintf(fptr_write, OPCODE_MUL);
+        write_register_code(reg_output, fptr_write);
+        write_register_code(reg_output2, fptr_write);
+        write_register_code(reg_output3, fptr_write);
+        fprintf(fptr_write, "%s", immediate);
+        fprintf(fptr_write, "\n");
         }
 
         cmp_result = strcmp(mnemonic, DIV);
@@ -90,7 +128,17 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //DIV R2, R0, R1
+        char* reg_output = strtok (NULL, ",");
+        char* reg_output2 = strtok (NULL, ",");
+        char* reg_output3 = strtok (NULL, ",");
+        char* immediate = strtok (NULL, "\0");
 
+        fprintf(fptr_write, OPCODE_DIV);
+        write_register_code(reg_output, fptr_write);
+        write_register_code(reg_output2, fptr_write);
+        write_register_code(reg_output3, fptr_write);
+        fprintf(fptr_write, "%s", immediate);
+        fprintf(fptr_write, "\n");
             
         }
 
@@ -98,8 +146,17 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
 
         if (cmp_result == 0)
         {
-            //LDR R1, [R0 + b0000]
+            //LDR R1, [R0 + b000]
+        char* reg_output = strtok (NULL, ",");
+        char* reg_output2 = strtok (NULL, ",");
+        char* Prefix_removal = strtok (NULL, "b");
+        char* immediate = strtok (NULL, "\0");
 
+        fprintf(fptr_write, OPCODE_LDR);
+        write_register_code(reg_output, fptr_write);
+        write_register_code(reg_output2, fptr_write);
+        fprintf(fptr_write, "%s", immediate);
+        fprintf(fptr_write, "\n");
             
         }
 
@@ -107,7 +164,17 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
 
         if (cmp_result == 0)
         {
-            //STR R3, [R0 + b0000] 
+            //STR R3, [R0 + b000]
+        char* reg_output = strtok (NULL, ",");
+        char* reg_output2 = strtok (NULL, ",");
+        char* Prefix_removal = strtok (NULL, "b");
+        char* immediate = strtok (NULL, "\0");
+
+        fprintf(fptr_write, OPCODE_STR);
+        write_register_code(reg_output, fptr_write);
+        write_register_code(reg_output2, fptr_write);
+        fprintf(fptr_write, "%s", immediate);
+        fprintf(fptr_write, "\n"); 
 
             
         }
@@ -117,7 +184,14 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //BE R3, b00011100
+        char* reg_output = strtok (NULL, ",");
+        char* Prefix_removal = strtok (NULL, "b");
+        char* immediate = strtok (NULL, "\0");
 
+        fprintf(fptr_write, OPCODE_BE);
+        write_register_code(reg_output, fptr_write);
+        fprintf(fptr_write, "%s", immediate);
+        fprintf(fptr_write, "\n"); 
             
         }
 
@@ -126,7 +200,14 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //BNE R3, b00011100
+        char* reg_output = strtok (NULL, ",");
+        char* Prefix_removal = strtok (NULL, "b");
+        char* immediate = strtok (NULL, "\0");
 
+        fprintf(fptr_write, OPCODE_BNE);
+        write_register_code(reg_output, fptr_write);
+        fprintf(fptr_write, "%s", immediate);
+        fprintf(fptr_write, "\n"); 
             
         }
 
@@ -135,7 +216,14 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //BL R3, b00011100
+        char* reg_output = strtok (NULL, ",");
+        char* Prefix_removal = strtok (NULL, "b");
+        char* immediate = strtok (NULL, "\0");
 
+        fprintf(fptr_write, OPCODE_BL);
+        write_register_code(reg_output, fptr_write);
+        fprintf(fptr_write, "%s", immediate);
+        fprintf(fptr_write, "\n");
             
         }
 
@@ -144,6 +232,14 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //BG R3, b00011100
+        char* reg_output = strtok (NULL, ",");
+        char* Prefix_removal = strtok (NULL, "b");
+        char* immediate = strtok (NULL, "\0");
+
+        fprintf(fptr_write, OPCODE_BG);
+        write_register_code(reg_output, fptr_write);
+        fprintf(fptr_write, "%s", immediate);
+        fprintf(fptr_write, "\n");
 
             
         }
@@ -153,7 +249,14 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //BLE R3, b00011100
+        char* reg_output = strtok (NULL, ",");
+        char* Prefix_removal = strtok (NULL, "b");
+        char* immediate = strtok (NULL, "\0");
 
+        fprintf(fptr_write, OPCODE_BLE);
+        write_register_code(reg_output, fptr_write);
+        fprintf(fptr_write, "%s", immediate);
+        fprintf(fptr_write, "\n");
             
         }
 
@@ -162,7 +265,14 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //BGE R3, b00011100
+        char* reg_output = strtok (NULL, ",");
+        char* Prefix_removal = strtok (NULL, "b");
+        char* immediate = strtok (NULL, "\0");
 
+        fprintf(fptr_write, OPCODE_BGE);
+        write_register_code(reg_output, fptr_write);
+        fprintf(fptr_write, "%s", immediate);
+        fprintf(fptr_write, "\n");
             
         }
 
@@ -171,7 +281,15 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //B  b00100000
+        char* reg_output = strtok (NULL, ",");
+        char* Prefix_removal = strtok (NULL, "b");
+        char* immediate = strtok (NULL, "\0");
 
+        fprintf(fptr_write, OPCODE_B);
+        write_register_code(reg_output, fptr_write);
+        fprintf(fptr_write, "%s", immediate);
+        fprintf(fptr_write, "\n");
+            
             
         }
 
