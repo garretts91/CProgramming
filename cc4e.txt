@@ -112,6 +112,7 @@ Ch2
 - bitwise operators play a role in encryption, decryption, and checksum calculations
 ****- look @ exercise 2-5? Modify getbits to number bits from left to right
 
+
 2.10 Assignment Operators and Expressions
 - i += 2
 - check bitcount
