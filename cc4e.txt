@@ -135,7 +135,6 @@ Ch2
 
 Ch3 Control Flow
 
-
 3.1 Statements and Blocks
 - an expression becomes a statement when it is followed by a semicolon
 	- x = 0;
