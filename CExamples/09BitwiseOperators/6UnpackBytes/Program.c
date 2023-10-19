@@ -5,7 +5,7 @@ void UnpackBytes(unsigned short value, unsigned char* lowOrderByte, unsigned cha
 int main() 
 {
 	//Input
-	unsigned short number = 0xABCD;
+	unsigned short int number = 0xABCD;
 
 	//Process
 	unsigned char lowOrderByte = 0;

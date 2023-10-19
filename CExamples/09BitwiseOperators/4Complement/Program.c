@@ -3,8 +3,8 @@
 int main() 
 {
 	//Local Variables
-	int numberOne = 0;
-	int numberTwo = 0;
+	unsigned int numberOne = 0;
+	unsigned int numberTwo = 0;
 	
 	//Input
 	printf("Enter number one: ");
@@ -16,7 +16,7 @@ int main()
 	//Process
 	numberTwo = ~numberTwo;
 	numberTwo = numberTwo + 1;
-	int result = numberOne + numberTwo;
+	unsigned int result = numberOne + numberTwo;
 
 	//Output
 	printf("Number one - number two: %d", result);

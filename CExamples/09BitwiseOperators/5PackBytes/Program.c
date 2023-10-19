@@ -23,11 +23,11 @@ unsigned short PackBytes(unsigned char c1, unsigned char c2)
 {
 	unsigned short result = c1;
 
-	//result = result << 8;
-	result <<= 8;
+	result = result << 8;
+	//result <<= 8;
 
-	//result = result | c2;
-	result |= c2;
+	result = result | c2;
+	//result |= c2;
 
 	return result;
 }

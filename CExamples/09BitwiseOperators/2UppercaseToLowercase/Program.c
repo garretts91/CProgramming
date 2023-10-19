@@ -4,14 +4,14 @@ void SpitBits(unsigned char value);
 
 int main() 
 {
-	const int SIXTH_BIT_MASK = 0x20;
+	const char SIXTH_BIT_MASK = 0x20;
 
 	//Input
 	printf("Enter an uppercase letter: ");
 	char upperCaseLetter = getchar();
 	
 	//Process
-	char lowerCaseLetter = (char)(upperCaseLetter | SIXTH_BIT_MASK);
+	char lowerCaseLetter = upperCaseLetter | SIXTH_BIT_MASK;
 	
 	//Output
 	printf("Binary representation of the uppercase character \'%c\' is: ", upperCaseLetter);

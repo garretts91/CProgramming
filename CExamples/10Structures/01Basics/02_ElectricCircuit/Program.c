@@ -6,10 +6,10 @@ void main()
 	struct ElectricCircuit electricCircuit;
 
 	printf("Enter voltage: ");
-	int result = scanf("%lf", &electricCircuit.voltage);
+	int result = scanf("%lf", &(electricCircuit.voltage));
 
 	printf("Enter resistance: ");
-	result = scanf("%lf", &electricCircuit.resistance);
+	result = scanf("%lf", &(electricCircuit.resistance));
 
 	double current = ComputeCurrent(electricCircuit);
 
