@@ -1,4 +1,14 @@
-﻿#pragma warning(disable : 4996)
+﻿// Name: Garrett Solomon
+// Date: October 20, 2023 
+// Desciption: 
+// 
+// 
+// 
+// 
+// 
+// 
+
+#pragma warning(disable : 4996)
 //https://www.tutorialspoint.com/c_standard_library/c_function_fgets.htm
 
 #include <stdio.h>
