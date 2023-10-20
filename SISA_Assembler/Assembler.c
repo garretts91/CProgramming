@@ -6,7 +6,7 @@
 // 
 // 
 // 
-// 
+
 
 #pragma warning(disable : 4996)
 //https://www.tutorialspoint.com/c_standard_library/c_function_fgets.htm
