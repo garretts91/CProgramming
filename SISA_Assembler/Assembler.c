@@ -1,12 +1,10 @@
 ﻿// Name: Garrett Solomon
 // Date: October 20, 2023 
-// Desciption: 
-// 
-// 
-// 
-// 
-// 
-
+// Desciption: In this program, the code reads an assembly file, then translates the assembly statements into machine code 
+// and writes the machine code instructions to an output file. It uses various assembly statements which include
+// arithmetic, loading registers, storing registers, branch registers which include branch, branch if equal
+// branch if not equal, branch less than, greater than, and more
+// we are trying to match the output of the machine code instructions (valid) files with our own machine code instructions.
 
 #pragma warning(disable : 4996)
 //https://www.tutorialspoint.com/c_standard_library/c_function_fgets.htm
