@@ -40,7 +40,8 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         printf("Translating assembly statement: %s\n", file_line);
 
         char* mnemonic = strtok(file_line, " \r\n");
-
+        
+        // move immediate opcode 
         cmp_result = strcmp(mnemonic, MOVI);
 
         if (cmp_result == 0)
@@ -55,6 +56,7 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
             fprintf(fptr_write, "%s", immediate);
         }
 
+        // add opcode 
         cmp_result = strcmp(mnemonic, ADD);
 
         if (cmp_result == 0)
@@ -70,6 +72,7 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
             write_register_code(reg1, fptr_write);
         }
 
+        // subtract opcode
         cmp_result = strcmp(mnemonic, SUB);
 
         if (cmp_result == 0)
@@ -86,6 +89,7 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
 
         }
 
+        // compare opcode
         cmp_result = strcmp(mnemonic, CMP);
 
         if (cmp_result == 0)
@@ -101,6 +105,7 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
             write_register_code(reg1, fptr_write);
         }
 
+        // multiply opcode 
         cmp_result = strcmp(mnemonic, MUL);
 
         if (cmp_result == 0)
@@ -116,6 +121,7 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
             write_register_code(reg1, fptr_write);
         }
 
+        // divide opcode
         cmp_result = strcmp(mnemonic, DIV);
 
         if (cmp_result == 0)
@@ -131,6 +137,7 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
             write_register_code(reg1, fptr_write);          
         }
 
+        // load register opcode 
         cmp_result = strcmp(mnemonic, LDR);
 
         if (cmp_result == 0)
@@ -148,6 +155,7 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
             fprintf(fptr_write, "%s", immediate);
         }
 
+        // store register opcode 
         cmp_result = strcmp(mnemonic, STR);
 
         if (cmp_result == 0)
@@ -165,6 +173,7 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
             fprintf(fptr_write, "%s", immediate);                   
         }
 
+        // branch equal to opcode 
         cmp_result = strcmp(mnemonic, BE);
 
         if (cmp_result == 0)
@@ -177,6 +186,7 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
             write_register_code(reg_output, fptr_write);            
         }
 
+        // branch not equal to opcode 
         cmp_result = strcmp(mnemonic, BNE);
 
         if (cmp_result == 0)
@@ -189,6 +199,7 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
             write_register_code(reg_output, fptr_write);            
         }
 
+        // branch less than opcode 
         cmp_result = strcmp(mnemonic, BL);
 
         if (cmp_result == 0)
@@ -203,6 +214,7 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
             fprintf(fptr_write, "%s", immediate);            
         }
 
+        // branch greater than opcode 
         cmp_result = strcmp(mnemonic, BG);
 
         if (cmp_result == 0)
@@ -217,6 +229,7 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
             fprintf(fptr_write, "%s", immediate);            
         }
 
+        // branch less than or equal to opcode 
         cmp_result = strcmp(mnemonic, BLE);
 
         if (cmp_result == 0)
@@ -231,6 +244,7 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
             fprintf(fptr_write, "%s", immediate);            
         }
 
+        // branch greater than or equal to opcode 
         cmp_result = strcmp(mnemonic, BGE);
 
         if (cmp_result == 0)
@@ -245,6 +259,7 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
             fprintf(fptr_write, "%s", immediate);            
         }
 
+        // branch opcode 
         cmp_result = strcmp(mnemonic, B);
 
         if (cmp_result == 0)
@@ -258,6 +273,7 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
             fprintf(fptr_write, "%s", immediate);           
         }
 
+        // halt opcode
         cmp_result = strcmp(mnemonic, HALT);
 
         if (cmp_result == 0)
