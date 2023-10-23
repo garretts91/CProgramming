@@ -259,7 +259,7 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
             fprintf(fptr_write, "%s", immediate);            
         }
 
-        // branch opcode 
+        // unconditional branch opcode 
         cmp_result = strcmp(mnemonic, B);
 
         if (cmp_result == 0)
