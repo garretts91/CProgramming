@@ -59,14 +59,16 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //ADD R2, R0, R1
-            char* dest_reg = strtok(NULL, " ,");
-            char* regi_1 = strtok(NULL, " ,");
-            char regi_2 = strtok(NULL, " ,");
+            char* r2tok = strtok(NULL, " ,");
+            char* r0tok = strtok(NULL, " ,");
+            char* r1tok = strtok(NULL, " \0");
 
-            write_opcode(mnemonic, &machineInstruction, OPCODE_ADD);
+            write_opcode(mnemonic, &machineInstruction, OPCODE_SHIFT);
+            write_register_code(r2tok, &machineInstruction, RT_REG_SHIFT);
+            write_register_code(r0tok, &machineInstruction, RM_REG_SHIFT);
+            write_register_code(r1tok, &machineInstruction, RN_REG_SHIFT);
 
-
-            
+            write_machine_instruction(fptr_write, machineInstruction);    
         }
 
         cmp_result = strcmp(mnemonic, SUB);
@@ -74,7 +76,16 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //SUB R2, R0, R1
+            char* r2tok = strtok(NULL, " ,");
+            char* r0tok = strtok(NULL, " ,");
+            char* r1tok = strtok(NULL, " ,");
 
+            write_opcode(mnemonic, &machineInstruction, OPCODE_SHIFT);
+            write_register_code(r2tok, &machineInstruction, RT_REG_SHIFT);
+            write_register_code(r1tok, &machineInstruction, RM_REG_SHIFT);
+            write_register_code(r0tok, &machineInstruction, RN_REG_SHIFT);
+
+            write_machine_instruction(fptr_write, machineInstruction); 
             
         }
 
@@ -83,7 +94,16 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //CMP R3, R1, R2
+            char* r3tok = strtok(NULL, " ,");
+            char* r1tok = strtok(NULL, " ,");
+            char* r2tok = strtok(NULL, " ,");
 
+            write_opcode(mnemonic, &machineInstruction, OPCODE_SHIFT);
+            write_register_code(r3tok, &machineInstruction, RT_REG_SHIFT);
+            write_register_code(r1tok, &machineInstruction, RM_REG_SHIFT);
+            write_register_code(r2tok, &machineInstruction, RN_REG_SHIFT);
+
+            write_machine_instruction(fptr_write, machineInstruction); 
             
         }
 
@@ -92,7 +112,16 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //MUL R2, R0, R1
+            char* r2tok = strtok(NULL, " ,");
+            char* r0tok = strtok(NULL, " ,");
+            char* r1tok = strtok(NULL, " ,");
 
+            write_opcode(mnemonic, &machineInstruction, OPCODE_SHIFT);
+            write_register_code(r2tok, &machineInstruction, RT_REG_SHIFT);
+            write_register_code(r1tok, &machineInstruction, RM_REG_SHIFT);
+            write_register_code(r0tok, &machineInstruction, RN_REG_SHIFT);
+
+            write_machine_instruction(fptr_write, machineInstruction); 
             
         }
 
@@ -101,7 +130,16 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //DIV R2, R0, R1
+            char* r2tok = strtok(NULL, " ,");
+            char* r0tok = strtok(NULL, " ,");
+            char* r1tok = strtok(NULL, " ,");
 
+            write_opcode(mnemonic, &machineInstruction, OPCODE_SHIFT);
+            write_register_code(r2tok, &machineInstruction, RT_REG_SHIFT);
+            write_register_code(r1tok, &machineInstruction, RM_REG_SHIFT);
+            write_register_code(r0tok, &machineInstruction, RN_REG_SHIFT);
+
+            write_machine_instruction(fptr_write, machineInstruction); 
             
         }
 
@@ -110,8 +148,18 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //LDR R1, [R0 + b0000]
+            char* r1tok = strtok(NULL, ",");
+            char* removeBracket = strtok(NULL, "[]");
+            char* r0tok = strtok(NULL, " ");
+            char* removePrefix = strtok(NULL, "b");
+            char* immediate = strtok(NULL, " ]");
 
-            
+            write_opcode(mnemonic, &machineInstruction, OPCODE_SHIFT);
+            write_register_code(r1tok, &machineInstruction, RT_REG_SHIFT);
+            write_register_code(r0tok, &machineInstruction, RN_REG_SHIFT);
+            write_immediate(immediate, &machineInstruction, IMM_8_BIT_SHIFT);            
+        
+            write_machine_instruction(fptr_write, machineInstruction); 
         }
 
         cmp_result = strcmp(mnemonic, STR);
@@ -119,8 +167,18 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //STR R3, [R0 + b0000]
+            char* r1tok = strtok(NULL, ",");
+            char* removeBracket = strtok(NULL, "[]");
+            char* r0tok = strtok(NULL, " ");
+            char* removePrefix = strtok(NULL, "b");
+            char* immediate = strtok(NULL, " ]");
 
-            
+            write_opcode(mnemonic, &machineInstruction, OPCODE_SHIFT);
+            write_register_code(r1tok, &machineInstruction, RT_REG_SHIFT);
+            write_register_code(r0tok, &machineInstruction, RN_REG_SHIFT);
+            write_immediate(immediate, &machineInstruction, IMM_8_BIT_SHIFT);            
+        
+            write_machine_instruction(fptr_write, machineInstruction);             
         }
 
         cmp_result = strcmp(mnemonic, BE);
@@ -128,8 +186,15 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //BE R3, b00011100
+            char* r3tok = strtok(NULL, ",");
+            char* prefixRemoval = strtok(NULL," b");
+            char* immediate = strtok(NULL, " \0");
 
-            
+            write_opcode(mnemonic, &machineInstruction, OPCODE_SHIFT);
+            write_register_code(r3tok, &machineInstruction, RT_REG_SHIFT);
+            write_immediate(immediate, &machineInstruction, IMM_8_BIT_SHIFT);
+
+            write_machine_instruction(fptr_write, machineInstruction);             
         }
 
         cmp_result = strcmp(mnemonic, BNE);
@@ -137,7 +202,15 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //BNE R3, b00011100
+            char* r3tok = strtok(NULL, ",");
+            char* prefixRemoval = strtok(NULL," b");
+            char* immediate = strtok(NULL, " \0");
 
+            write_opcode(mnemonic, &machineInstruction, OPCODE_SHIFT);
+            write_register_code(r3tok, &machineInstruction,RT_REG_SHIFT);
+            write_immediate(immediate, &machineInstruction, IMM_8_BIT_SHIFT);
+
+            write_machine_instruction(fptr_write, machineInstruction);    
             
         }
 
@@ -146,7 +219,15 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //BL R3, b00011100
+            char* r3tok = strtok(NULL, ",");
+            char* prefixRemoval = strtok(NULL,"b");
+            char* immediate = strtok(NULL, " \0");
 
+            write_opcode(mnemonic, &machineInstruction, OPCODE_SHIFT);
+            write_register_code(r3tok, &machineInstruction,RT_REG_SHIFT);
+            write_immediate(immediate, &machineInstruction, IMM_8_BIT_SHIFT);
+
+            write_machine_instruction(fptr_write, machineInstruction);    
             
         }
 
@@ -155,7 +236,15 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //BG R3, b00011100
+            char* r3tok = strtok(NULL, ",");
+            char* prefixRemoval = strtok(NULL," b");
+            char* immediate = strtok(NULL, " \0");
 
+            write_opcode(mnemonic, &machineInstruction, OPCODE_SHIFT);
+            write_register_code(r3tok, &machineInstruction,RT_REG_SHIFT);
+            write_immediate(immediate, &machineInstruction, IMM_8_BIT_SHIFT);
+
+            write_machine_instruction(fptr_write, machineInstruction);    
             
         }
 
@@ -164,7 +253,15 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //BLE R3, b00011100
+            char* r3tok = strtok(NULL, ",");
+            char* prefixRemoval = strtok(NULL," b");
+            char* immediate = strtok(NULL, " \0");
 
+            write_opcode(mnemonic, &machineInstruction, OPCODE_SHIFT);
+            write_register_code(r3tok, &machineInstruction,RT_REG_SHIFT);
+            write_immediate(immediate, &machineInstruction, IMM_8_BIT_SHIFT);
+
+            write_machine_instruction(fptr_write, machineInstruction);    
             
         }
 
@@ -173,7 +270,15 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //BGE R3, b00011100
+            char* r3tok = strtok(NULL, ",");
+            char* prefixRemoval = strtok(NULL," b");
+            char* immediate = strtok(NULL, " \0");
 
+            write_opcode(mnemonic, &machineInstruction, OPCODE_SHIFT);
+            write_register_code(r3tok, &machineInstruction,RT_REG_SHIFT);
+            write_immediate(immediate, &machineInstruction, IMM_8_BIT_SHIFT);
+
+            write_machine_instruction(fptr_write, machineInstruction);    
             
         }
 
@@ -182,7 +287,13 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //B  b00100000
+            char* prefixRemoval = strtok(NULL,"b");
+            char* immediate = strtok(NULL, " \0");
 
+            write_opcode(mnemonic, &machineInstruction, OPCODE_SHIFT);
+            write_immediate(immediate, &machineInstruction, IMM_8_BIT_SHIFT);
+
+            write_machine_instruction(fptr_write, machineInstruction);    
             
         }
 
@@ -210,7 +321,6 @@ void write_opcode(char* opcode, unsigned short* machineInstruction, unsigned sho
     cmp_result = strcmp(opcode, MOVI);
     if (cmp_result == 0) machineOpcode = OPCODE_MOVI;
 
-    //TODO
     cmp_result = strcmp(opcode, ADD);
     if (cmp_result == 0) machineOpcode = OPCODE_ADD;
 
