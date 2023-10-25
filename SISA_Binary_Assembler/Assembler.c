@@ -271,7 +271,50 @@ void write_register_code(char* reg_num, unsigned short* machineInstruction, unsi
     cmp_result = strcmp(reg_num, ACRO_R0);
     if (cmp_result == 0) machineRegister = MCRO_R0;
 	
-    
+    cmp_result = strcmp(reg_num, ACRO_R1);
+    if (cmp_result == 0) machineRegister = MCRO_R1;
+
+    cmp_result = strcmp(reg_num, ACRO_R2);
+    if (cmp_result == 0) machineRegister = MCRO_R2;
+
+    cmp_result = strcmp(reg_num, ACRO_R3);
+    if (cmp_result == 0) machineRegister = MCRO_R3;
+
+    cmp_result = strcmp(reg_num, ACRO_R4);
+    if (cmp_result == 0) machineRegister = MCRO_R4;
+
+    cmp_result = strcmp(reg_num, ACRO_R5);
+    if (cmp_result == 0) machineRegister = MCRO_R5;
+
+    cmp_result = strcmp(reg_num, ACRO_R6);
+    if (cmp_result == 0) machineRegister = MCRO_R6;
+
+    cmp_result = strcmp(reg_num, ACRO_R7);
+    if (cmp_result == 0) machineRegister = MCRO_R7;
+
+    cmp_result = strcmp(reg_num, ACRO_R8);
+    if (cmp_result == 0) machineRegister = MCRO_R8;
+
+    cmp_result = strcmp(reg_num, ACRO_R9);
+    if (cmp_result == 0) machineRegister = MCRO_R9;
+
+    cmp_result = strcmp(reg_num, ACRO_R10);
+    if (cmp_result == 0) machineRegister = MCRO_R10;
+
+    cmp_result = strcmp(reg_num, ACRO_R11);
+    if (cmp_result == 0) machineRegister = MCRO_R11;
+
+    cmp_result = strcmp(reg_num, ACRO_R12);
+    if (cmp_result == 0) machineRegister = MCRO_R12;
+
+    cmp_result = strcmp(reg_num, ACRO_R13);
+    if (cmp_result == 0) machineRegister = MCRO_R13;
+
+    cmp_result = strcmp(reg_num, ACRO_R14);
+    if (cmp_result == 0) machineRegister = MCRO_R14;
+
+    cmp_result = strcmp(reg_num, ACRO_R15);
+    if (cmp_result == 0) machineRegister = MCRO_R15;
 
     machineRegister = machineRegister << leftShift;
     *machineInstruction = *machineInstruction | machineRegister;
