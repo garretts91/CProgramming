@@ -1,4 +1,8 @@
-﻿#pragma warning(disable : 4996)
+﻿//Name: Garrett Solomon and Colson Swope
+//Date: October 25, 2023
+//Description:
+
+#pragma warning(disable : 4996)
 //https://www.tutorialspoint.com/c_standard_library/c_function_fgets.htm
 
 #include <stdio.h>
