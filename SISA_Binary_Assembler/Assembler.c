@@ -204,8 +204,7 @@ void write_opcode(char* opcode, unsigned short* machineInstruction, unsigned sho
     cmp_result = strcmp(opcode, MOVI);
     if (cmp_result == 0) machineOpcode = OPCODE_MOVI;
 
-    cmp_result = strcmp(opcode, HALT);
-    if (cmp_result == 0) machineOpcode = OPCODE_HALT;
+    //TODO
        
 
     machineOpcode = machineOpcode << leftShift;
@@ -219,6 +218,8 @@ void write_register_code(char* reg_num, unsigned short* machineInstruction, unsi
 
     cmp_result = strcmp(reg_num, ACRO_R0);
     if (cmp_result == 0) machineRegister = MCRO_R0;
+	
+	//TODO
 
     machineRegister = machineRegister << leftShift;
     *machineInstruction = *machineInstruction | machineRegister;
@@ -226,8 +227,8 @@ void write_register_code(char* reg_num, unsigned short* machineInstruction, unsi
 
 void write_immediate(char* immediate, unsigned short* machineInstruction, unsigned short leftShift)
 {
-    
-   unsigned short machineImmediate = (unsigned short)strtol(immediate, NULL, 2);;
+   unsigned short machineImmediate = (unsigned short)strtol(immediate, NULL, 2);
+   
    machineImmediate = machineImmediate << leftShift;
    *machineInstruction = *machineInstruction | machineImmediate;
 }
