@@ -59,6 +59,12 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //ADD R2, R0, R1
+            char* dest_reg = strtok(NULL, " ,");
+            char* regi_1 = strtok(NULL, " ,");
+            char regi_2 = strtok(NULL, " ,");
+
+            write_opcode(mnemonic, &machineInstruction, OPCODE_ADD);
+
 
             
         }
@@ -205,7 +211,53 @@ void write_opcode(char* opcode, unsigned short* machineInstruction, unsigned sho
     if (cmp_result == 0) machineOpcode = OPCODE_MOVI;
 
     //TODO
-       
+    cmp_result = strcmp(opcode, ADD);
+    if (cmp_result == 0) machineOpcode = OPCODE_ADD;
+
+    cmp_result = strcmp(opcode, MOVI);
+    if (cmp_result == 0) machineOpcode = OPCODE_MOVI;
+
+    cmp_result = strcmp(opcode, SUB);
+    if (cmp_result == 0) machineOpcode = OPCODE_SUB;
+
+    cmp_result = strcmp(opcode, CMP);
+    if (cmp_result == 0) machineOpcode = OPCODE_CMP;
+
+    cmp_result = strcmp(opcode, MUL);
+    if (cmp_result == 0) machineOpcode = OPCODE_MUL;
+
+    cmp_result = strcmp(opcode, DIV);
+    if (cmp_result == 0) machineOpcode = OPCODE_DIV;
+
+    cmp_result = strcmp(opcode, LDR);
+    if (cmp_result == 0) machineOpcode = OPCODE_LDR;
+
+    cmp_result = strcmp(opcode, STR);
+    if (cmp_result == 0) machineOpcode = OPCODE_STR;
+
+    cmp_result = strcmp(opcode, BE);
+    if (cmp_result == 0) machineOpcode = OPCODE_BE;
+
+    cmp_result = strcmp(opcode, BNE);
+    if (cmp_result == 0) machineOpcode = OPCODE_BNE;
+
+    cmp_result = strcmp(opcode, BL);
+    if (cmp_result == 0) machineOpcode = OPCODE_BL;
+
+    cmp_result = strcmp(opcode, BG);
+    if (cmp_result == 0) machineOpcode = OPCODE_BG;
+
+    cmp_result = strcmp(opcode, BLE);
+    if (cmp_result == 0) machineOpcode = OPCODE_BLE;
+
+    cmp_result = strcmp(opcode, BGE);
+    if (cmp_result == 0) machineOpcode = OPCODE_BGE;
+
+    cmp_result = strcmp(opcode, B);
+    if (cmp_result == 0) machineOpcode = OPCODE_B;
+
+    cmp_result = strcmp(opcode, HALT);
+    if (cmp_result == 0) machineOpcode = OPCODE_HALT;   
 
     machineOpcode = machineOpcode << leftShift;
     *machineInstruction = *machineInstruction | machineOpcode;
@@ -219,7 +271,7 @@ void write_register_code(char* reg_num, unsigned short* machineInstruction, unsi
     cmp_result = strcmp(reg_num, ACRO_R0);
     if (cmp_result == 0) machineRegister = MCRO_R0;
 	
-	//TODO
+    
 
     machineRegister = machineRegister << leftShift;
     *machineInstruction = *machineInstruction | machineRegister;
