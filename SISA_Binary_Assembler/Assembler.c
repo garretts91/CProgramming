@@ -171,14 +171,14 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         if (cmp_result == 0)
         {
             //STR R3, [R0 + b0000]
-            char* r1tok = strtok(NULL, ",");
+            char* r3tok = strtok(NULL, ",");
             char* removeBracket = strtok(NULL, "[]");
             char* r0tok = strtok(NULL, " ");
             char* removePrefix = strtok(NULL, "b");
             char* immediate = strtok(NULL, " ]");
 
             write_opcode(mnemonic, &machineInstruction, OPCODE_SHIFT);
-            write_register_code(r1tok, &machineInstruction, RT_REG_SHIFT);
+            write_register_code(r3tok, &machineInstruction, RT_REG_SHIFT);
             write_register_code(r0tok, &machineInstruction, RN_REG_SHIFT);
             write_immediate(immediate, &machineInstruction, IMM_8_BIT_SHIFT);            
         
