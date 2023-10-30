@@ -1,0 +1,69 @@
+The ARMv8 Instruction Set Architecture (ISA)
+
+1. in 2013, ARM (advanced RISC machine) released its 64-bit ARMv8 architecture
+- the ARM processor is the most widely used 32-bit instruction architecture
+- ARM is a load/store architecture:
+  - all data processing must be performed on values in registers, not memory
+  - uses fixed-length, three-operand instructions, and simple addressing modes
+
+2. ARM Cortex-A series:
+https://developer.arm.com/documentation/den0024/latest
+- the programmers guides are mean to compliment, rather than replace, other ARM documentation available 
+  - such as technical reference manuals (TRM's) for the processors themselves,
+    - documentation for individual devices or boards, OR (most importantly)
+    - the ARM Architecture Reference Manual (the ARM ARM)
+- they are intended to provide a gentle introduction to the ARM architecture and cover all
+  - the main conepts that you need to know about
+- C and Assembly, with hints and tips for writing your own code, such as 
+  - processor boot code and device drivers
+
+ARMv8 Register Set 
+3. ARMv8 has 31 general purpose registers: R0-R30 
+- for 64-bit mode, AArch64, the registers are 64 bits and are referred to as X0-X30
+- for 32-bit mode, AArch32, the registers are 32 bits and are referred to as W0-W30
+(Look @ study guide for reference picture)
+
+- The 32-bit W register forms the lower half of the corresponding 64-bit X register 
+- (that is) W0 maps onto the lower word if X0, and W1 maps onto the lower word of X1, etc.
+- reads from W registers disregard the higher 32 bits of the corresponding X register and leave them unchanged
+- writes to W registers set the higher 32 bit of the X register to zero, that is 
+  - writing 0xFFFFFFFF into W0 sets X0 to 0x00000000FFFFFFFF
+- in addition to the 31 core registers, there are also several special registers 
+
+Name        Size            Description 
+WZR         32 bits         Zero Register 
+XZR         64 bits         Zero Register 
+WSP         32 bits         Current Stack Pointer 
+SP          64 bits         Current Stack Pointer 
+PC          64 bits         Program Counter 
+
+- when accessing the zero register, all writes are ignored, and all reads return 0
+- the zero register reads as zero when used as a source register and discards the result when
+  - used as a destination register 
+- you can use the zero register in most, but not all, instructions 
+- note that the 64-bit form of the SP register does not use an X prefix
+
+- the Program Counter (PC) register is never accessible as a named register 
+- its use is implicit in certain instructions, such as the conditional and unconditional branch instructions
+  - where the branch address is relative to the PC
+  - NOTE: the PC cannot be specified as the destination of a data processing instruction of load instruction 
+
+4. For function calls, the general purpose registers are divided into four groups:
+- argument registers X0-X7: these are used to pass parameters to a function and to return a result 
+  - they can also be used as scratch registers or as caller-saved register variables that can hold
+    - intermediate values within a function 
+- caller-save registers X9-X15:
+  - if the caller requires the values in any of these registers to be preserved across a call to another function,
+    - the caller must save the registers in its stack frame
+  - registers X9-X15 can be modified by the call subroutine without the need to save and restore them 
+- callee-save registers X19-X29:
+- if the callee needs to use any of these registers, the callee must save the registers in its stack frame 
+- they can be modified by the callee as long as they are saved and restored before returning 
+
+- registers with a special purpose: X8, X16-18, X29, X30 
+
+
+
+
+
+

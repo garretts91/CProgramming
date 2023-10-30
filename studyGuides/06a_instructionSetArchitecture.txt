@@ -126,6 +126,3 @@ Instruction Set Architectures (ISA)
     - ADD R2, X, Y 
     
 
-
-
-
