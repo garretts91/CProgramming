@@ -331,9 +331,6 @@ void write_opcode(char* opcode, unsigned short* machineInstruction, unsigned sho
     cmp_result = strcmp(opcode, ADD);
     if (cmp_result == 0) machineOpcode = OPCODE_ADD;
 
-    cmp_result = strcmp(opcode, MOVI);
-    if (cmp_result == 0) machineOpcode = OPCODE_MOVI;
-
     cmp_result = strcmp(opcode, SUB);
     if (cmp_result == 0) machineOpcode = OPCODE_SUB;
 
