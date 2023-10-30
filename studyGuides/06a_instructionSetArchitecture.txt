@@ -1,0 +1,64 @@
+Instruction Set Architectures (ISA)
+1. Instruction Set Architectures (ISA's) are differentiated by the following attributes:
+- instruction set complexity: CISC (Complex Instruction Set Computer) vs RISC (Reduced Instruction Set Computer)
+- instruction length: short (16-bit), long (32-bit), or variable (1 byte - 8 bytes or longer)
+- types of operations: LOAD, STORE, ADD, SUB, MUL, DIV, CMP, BRANCH
+- number of instructions that the ISA supports
+- addressing mode: byte, word, or double-word addressable
+- addressing type: immediate, memory direct, register direct, register indirect, register offset
+  - immediate: operand is part of the instruction
+  - memory direct: memory address is part of the instruction 
+  - register direct: operand is in a register 
+  - register indirect: memory address of the operand is in a register 
+  - register-offset:
+    - register-immediate: the memory address of the operand is determined by the sum of the value in a register (base) plus
+      an immediate value (offset)
+    - register-register: the memory address of the operand is determined by the sum of the value in a register (base) plus 
+      the value in another register (offset)
+- number of registers
+- instruction operands 
+  - type and length in bits: (8-bit - 64-bit)
+  - number of operands per instruction: 0 - 3
+  - operand location: register, immediate, or memory
+
+2. the instructions that an ISA supports, fall into several types:
+- load/store: d-type (data type) - load values from memory into registers and store values from registers to memory
+- arithmetic/logic: r-type (register type) - all operands are registers 
+- immediate: i-type (immediate type) - one or more of the operands are immediate (constant) values
+- conditional transfer of control instructions: cb-type (conditional branch type) - used in conditional transfer of control instructions
+- unconditional transfer of control instructions: b-type (branch type) - used in conditional transfer of control instructions, and when
+  calling subroutines (functions)
+- special purpose
+
+3. a primary consideration for architecture design concerns how the CPU stores data
+  - we have three choices, in choosing one over the other, the design considerations are simplicity and cost of the hardware design with respect to
+    processor execution speed and ease of use 
+- general purpose register (GPR) architecture: instruction operands are read from written to registers or memory 
+- accumulator architecture: one instruction operand of a binary operation is in the accumulator, and the other operand is in memory
+- stack architecture: instruction operands are read from and written to the stack 
+
+4. most systems today are GPR systems. there are three types of GPR systems:
+- memory/memory: all operands, two or three operands, for logical and arithmetic operations are read from memory
+- register/memory: one or two operands for logical and arithmetic operations must be in registers. one operand at most is read from memory 
+- load/store: operands for logical and arithmetic operations are all registers
+  - before logical or arithmetic operations are executed, operands are loaded from memory into registers 
+- the number of operands and the number of available registers has a direct effect on instruction length 
+
+5. an example of a GPR memory/memory architecture:
+- in a GPR memory/memory three-address system, the expression Z = (X + Y) - (W + U) might look like:
+    - ADD T1, X, Y
+    - ADD T2, W, U 
+    - SUB Z, T1, T2 
+- operands X, Y, W, U, Z, T1, and T2 are all memory operands. there are no register operands
+
+6. an example of a GPR register/memory architecture:
+- in a GPR register/memory three-address system, the expression Z = (X + Y) - (W + U) might look like:
+    - ADD R1, X, Y
+    - ADD R2, W, U 
+    - SUB Z, R1, R2 
+- operands X, Y, W, U, and Z are memory operands. operands R1 and R2 are register operands 
+
+7. an example of a GPR register/memory architecture:
+
+
+
