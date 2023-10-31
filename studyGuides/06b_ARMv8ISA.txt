@@ -61,7 +61,22 @@ PC          64 bits         Program Counter
 - they can be modified by the callee as long as they are saved and restored before returning 
 
 - registers with a special purpose: X8, X16-18, X29, X30 
+  - X8 is the indirect result register
+    - this is used to pass the address location of an indirect result, for example, where a function returns a large structure 
+  - X16 and X17 are IP0 and IP1, intra-procedure-call temporary registers 
+    - these can be used by call veneers and similar code, or
+      as temporary registers for intermediate values between subroutine calls 
+    - they are corruptible by a function. veneers are small pieces of code which are automatically inserted by the linker
+      - ex. when the branch target is out of range of the branch register 
+  - X18 is the platform register and is reserved for the use of platform ABI's 
+    - this is an additional temporary register on platforms that dont assign a special meaning to it 
+  - X29 is the frame pointer register (FP)
+  - X30 is the link register (LR)
+  - XZR (X31) stores 0
+- the low order word of each of the 64-bit registers is referenced as the 32-bit sub-registers W0 to W30 
 
+ARMv8 Assembly Instruction Formats 
+5. 
 
 
 
