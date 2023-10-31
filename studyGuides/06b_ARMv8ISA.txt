@@ -80,5 +80,3 @@ ARMv8 Assembly Instruction Formats
 
 
 
-
-
