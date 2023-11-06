@@ -3,6 +3,7 @@ Program Compilation, Linking, and Execution
     - "the stored program concept"
 - program instructions and program data are both represented as binary data in the computers memory 
 
+
 2. Programming tools carry out the mechanics of program compilation and Linking
 - C source code compilation and linking process:
 1. The Compiler is executed. 
