@@ -6,7 +6,7 @@
 // If they are correct, we get a "Pass" 
 
 #pragma warning(disable : 4996)
-//https://www.tutorialspoint.com/c_standard_library/c_function_fgets.htm
+// https://www.tutorialspoint.com/c_standard_library/c_function_fgets.htm
 
 #include <stdio.h>
 #include <stdlib.h>
