@@ -24,8 +24,14 @@ double my_atof(char s[])
 
 int main()
 {
+    
     char str[] = "3.14159"; // Replace with your input string
     double result = my_atof(str);
+    
+    
+    
     printf("The converted double is: %lf\n", result);
+    
     return 0;
+
 }
