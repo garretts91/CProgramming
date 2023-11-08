@@ -1,6 +1,6 @@
-﻿//Name: Garrett Solomon and Colson Swope
-//Date: October 25, 2023
-//Description: In this program, the code reads from an assembly instruction file,
+﻿// Name: Garrett Solomon and Colson Swope
+// Date: October 25, 2023
+// Description: In this program, the code reads from an assembly instruction file,
 // then translates that assembly code instruction into machine code instructions (written in binary)
 // it reads and writes to a new file, then tries to validate if the given machine code instructions are correct.
 // If they are correct, we get a "Pass" 
