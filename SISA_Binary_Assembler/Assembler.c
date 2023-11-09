@@ -1,6 +1,6 @@
-﻿//Name: Garrett Solomon and Colson Swope
-//Date: October 25, 2023
-//Description: In this program, the code reads from an assembly instruction file,
+﻿// Name: Garrett Solomon and Colson Swope
+// Date: October 25, 2023
+// Description: In this program, the code reads from an assembly instruction file,
 // then translates that assembly code instruction into machine code instructions (written in binary)
 // it reads and writes to a new file, then tries to validate if the given machine code instructions are correct.
 // If they are correct, we get a "Pass" 
@@ -163,7 +163,7 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
 
             write_opcode(mnemonic, &machineInstruction, OPCODE_SHIFT);
             write_register_code(r1tok, &machineInstruction, RT_REG_SHIFT);
-            write_register_code(r0tok, &machineInstruction, RN_REG_SHIFT);
+            write_register_code(r0tok, &machineInstruction, RM_REG_SHIFT);
             write_immediate(immediate, &machineInstruction, IMM_8_BIT_SHIFT);            
         
             write_machine_instruction(fptr_write, machineInstruction); 
@@ -278,8 +278,8 @@ void assemble(char* assemblyFilename, char* objectCodeFilename)
         {
             //BGE R3, b00011100
             char* r3tok = strtok(NULL, ",");
-            char* prefixRemoval = strtok(NULL," b");
-            char* immediate = strtok(NULL, " \0");
+            char* prefixRemoval = strtok(NULL,"b");
+            char* immediate = strtok(NULL, "\0");
 
             write_opcode(mnemonic, &machineInstruction, OPCODE_SHIFT);
             write_register_code(r3tok, &machineInstruction,RT_REG_SHIFT);
