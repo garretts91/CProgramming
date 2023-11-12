@@ -1,0 +1,21 @@
+#define ARRAY_SIZE 3
+int array[] = { 1,2,3 };
+int main()
+{
+int index = 0;
+int largest = 0;
+for (index = 0; index < ARRAY_SIZE; index++)
+{
+if (array[index] > largest) largest = array[index];
+}
+return largest;
+}
+
+if statement
+compare (array[index] > largest) largest ASSIGNED TO array[index]
+CMP R4, R1, R3  
+total = R2
+
+
+
+
