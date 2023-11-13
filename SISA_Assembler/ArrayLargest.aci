@@ -24,6 +24,8 @@ R4: represents the result of a comparison
 R5: represents the value read from memory during a load instruction 
 R6: represents the immediate value 1 that’s used to increment index.
 
+TODO: Add return function to the code
+
 MOVI R0, b00000000 
 MOVI R1, b00000000
 MOVI R2, b00000000
