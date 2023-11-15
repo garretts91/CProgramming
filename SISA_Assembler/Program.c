@@ -8,6 +8,7 @@ void main()
     TestAssemblerInstruction("Assembly Instruction: LDR_STR", "AssemblyCodeInstructions_03.aci", "MachineCodeInstructions_03.mci", "MachineCodeInstructions_03_Valid.mci");
     TestAssemblerInstruction("Assembly Instruction: CMP_BL_B", "AssemblyCodeInstructions_04.aci", "MachineCodeInstructions_04.mci", "MachineCodeInstructions_04_Valid.mci");
     TestAssemblerInstruction("Assembly Instruction: totalArray", "totalArray.aci", "totalArray.bin", "totalArray.bin");
+    TestAssemblerInstruction("Assembly Instruction: ArrayLargest", "arrayLargest.aci", "arrayLargest.bin", "arrayLargest.bin");
 
     printf("Press the enter key to continue...");
 
