@@ -1,6 +1,6 @@
 #pragma once
 
-#define ASSEMBLY_STATEMENT_BUFFER_SIZE 25
+#define ASSEMBLY_STATEMENT_BUFFER_SIZE 35
 
-void assemble(char* assemblyFilename, char* objectCodeFilename);
+void executeAssembler(char* assemblyFilename, char* objectCodeFilename);
 

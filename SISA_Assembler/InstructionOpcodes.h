@@ -1,5 +1,9 @@
 #pragma once
 
+//Data Directives
+#define DSS "DSS"
+#define DWORD "DWORD"
+
 //Assembly mnemonics 
 #define MOVI "MOVI"
 #define ADD  "ADD"
