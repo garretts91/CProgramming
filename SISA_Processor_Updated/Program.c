@@ -43,6 +43,7 @@ void main(int argc, char* argv[])
 		//int16_t programReturnValue = ComputerExecuteProgram(computerPtr, "TestProgram.mci");
 		int16_t programReturnValue = ComputerExecuteProgram(computerPtr, "ArrayMax.mci");
 
+		
 		printf("Program return value: %d\n", programReturnValue);
 	}
 
