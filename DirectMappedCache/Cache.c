@@ -40,16 +40,16 @@ void CacheWriteWord(CachePtr cachePtr, uint8_t mainMemoryAddress, uint8_t word)
 uint8_t GetCacheSetIndex(CachePtr cachePtr, uint8_t mainMemoryAddress)
 {
     //Determine the cache set index
-    uint8_t cacheSetIndex = mainMemoryAddress & CACHE_SET_INDEX_BITMASK;
-    cacheSetIndex = cacheSetIndex >> CACHE_BLOCK_OFFSET_BITS;
+    //uint8_t cacheSetIndex = mainMemoryAddress & CACHE_SET_INDEX_BITMASK;
+    //cacheSetIndex = cacheSetIndex >> CACHE_BLOCK_OFFSET_BITS;
 
     //Determine the address tag fields
     uint8_t addressTagField = mainMemoryAddress & CACHE_SET_TAG_BITMASK;
-    addressTagField = addressTagField >> (CACHE_SET_INDEX_BITS + CACHE_BLOCK_OFFSET_BITS);
+    addressTagField = addressTagField >> (CACHE_TAG_BITS + CACHE_BLOCK_OFFSET_BITS);
 
     //Read the valid bit and the tag from the cache set
-    bool isCacheSetValid = cachePtr->cacheSets[cacheSetIndex].validBit;
-    bool tagFieldsMatch = addressTagField == cachePtr->cacheSets[cacheSetIndex].tag;
+    bool isCacheSetValid = cachePtr->cacheSets[addressTagField].validBit;
+    bool tagFieldsMatch = addressTagField == cachePtr->cacheSets[addressTagField].tag;
 
     //If either the valid bit is false or the cache set tag doesn't match the address tag field,
     //then read the block from memory into the cache set
@@ -60,17 +60,17 @@ uint8_t GetCacheSetIndex(CachePtr cachePtr, uint8_t mainMemoryAddress)
         uint8_t memoryBlockAddress = mainMemoryAddress & MAIN_MEMORY_BLOCK_ADDDRESS_BITMASK;
 
         //Read the block from memory
-        cachePtr->cacheSets[cacheSetIndex].blockValues[0] = cachePtr->mainMemoryPtr->values[memoryBlockAddress];
-        cachePtr->cacheSets[cacheSetIndex].blockValues[1] = cachePtr->mainMemoryPtr->values[memoryBlockAddress + 1];
-        cachePtr->cacheSets[cacheSetIndex].blockValues[2] = cachePtr->mainMemoryPtr->values[memoryBlockAddress + 2];
-        cachePtr->cacheSets[cacheSetIndex].blockValues[3] = cachePtr->mainMemoryPtr->values[memoryBlockAddress + 3];
+        cachePtr->cacheSets[addressTagField].blockValues[0] = cachePtr->mainMemoryPtr->values[memoryBlockAddress];
+        cachePtr->cacheSets[addressTagField].blockValues[1] = cachePtr->mainMemoryPtr->values[memoryBlockAddress + 1];
+        cachePtr->cacheSets[addressTagField].blockValues[2] = cachePtr->mainMemoryPtr->values[memoryBlockAddress + 2];
+        cachePtr->cacheSets[addressTagField].blockValues[3] = cachePtr->mainMemoryPtr->values[memoryBlockAddress + 3];
 
         //Update the cache set tag field and valid bit
-        cachePtr->cacheSets[cacheSetIndex].tag = addressTagField;
-        cachePtr->cacheSets[cacheSetIndex].validBit = true;
+        cachePtr->cacheSets[addressTagField].tag = addressTagField;
+        cachePtr->cacheSets[addressTagField].validBit = true;
     }
 
-    return cacheSetIndex;
+    return addressTagField;
 }
 
 void CacheViewCache(CachePtr cachePtr)
