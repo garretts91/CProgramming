@@ -1,0 +1,44 @@
+The ARMv8 Processor Architecture 
+1. Primary components, interconnections between them, and the datapath of a CPU 
+- PC: Program Counter. contains the address of the currently executing instruction
+- IM: Instruction Memory. contains the program instructions 
+- IR: Instruction Register. contains the currently executing instruction 
+- RS: Register Set. commonly referred to as the Register File (RF)
+- ALU: Arithmetic Logic Unit. 
+- CU: (main) control unit. 
+  - generates control signals to direct the flow of data through the datapath
+  - the main control unit decodes the instruction and generates output signals that control the flow of data through the CPU's datapath 
+- ALU Control Unit: 
+  - decodes input signals from the main control unit and generates output signals that control the ALU operation 
+- Multiplexors (Data Selectors):
+  - to select input data from two or more data sources 
+  - each of the three Multiplexors shown has a 1-bit select line, and therefore can select from two sets of source data input 
+- Datapath:
+  - connects the PC, IM, RS, ALU.
+    - the ALU and RS are connected to external main memory via an external data bus 
+      - note: for this particular design (in the study guide) the datapath is designed to execute an instruction in one clock cycle 
+        - to accomodate this design, main memory is broken into two separate memories: 
+          - one contains the program's instructions 
+          - the other contains the program's data 
+- The two adders are used to compute the address of the next instruction 
+  - the computed value is stored in the PC 
+    - the adder on the left increments the PC by 4 bytes 
+    - the adder on the right receives the incremented PC and adds an offset
+      - the offset is obtained from the instructions immediate value 
+    - the multiplexors select line input determines which of these two computed values are stored in the PC 
+    - the select line input value is determined by the logical & of the ALU's Zero output and the CU's branch signal 
+    - the output from the right adder is selected only if the ALU's output is high (1), and the CU's branch signal is high (1)
+      - otherwise the output from the left adder is selected 
+- the top multiplexor in the middle is used to select either the ALU output or a data value from memory 
+  - the multiplexors select line input value is determined by the CU's MemtoReg signal 
+    - if MemtoReg is high (1), the data value from memory is selected, otherwise, the ALU output is selected 
+- the bottom multiplexor in the middle is used to select a register value or the immediate value from an instruction 
+  - the multiplexors select line input value is determined by the CU's ALUSrc signal 
+    - if ALUSrc is high (1), the immediate from an instruction is selected 
+      - otherwise, a register value is selected 
+- the ALU's 4-bit ALU operation input line determines the ALU operation 
+  - the ALU operation is determined by the ALU-CU (not shown in diagram) 
+    - depending on instruction class, the ALU calculates either an arithmetic result, a memory address for a load or store operation, or a branch target address     
+- the Data Memory's MemWrite input line determines if data is written to memory. 
+  - if MemWrite is high (1), a register data value is written to memory. 
+  - the memory location is determined by the ALU output 
