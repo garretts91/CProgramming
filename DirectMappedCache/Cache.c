@@ -2,7 +2,6 @@
 #include "Cache.h"
 #include "PrintingFormats.h"
 
-
 //PRIVATE FUNCTION PROTOTYPES
 uint8_t GetCacheSetIndex(CachePtr cachePtr, uint8_t memoryAddress);
 
@@ -39,47 +38,44 @@ void CacheWriteWord(CachePtr cachePtr, uint8_t mainMemoryAddress, uint8_t word)
 
 uint8_t GetCacheSetIndex(CachePtr cachePtr, uint8_t mainMemoryAddress)
 {
-    //Determine the cache set index
-    //uint8_t cacheSetIndex = mainMemoryAddress & CACHE_SET_INDEX_BITMASK;
-    //cacheSetIndex = cacheSetIndex >> CACHE_BLOCK_OFFSET_BITS;
     uint8_t i = 0;
+
     //Determine the address tag fields
     uint8_t addressTagField = mainMemoryAddress & CACHE_SET_TAG_BITMASK;
     addressTagField = addressTagField >> (CACHE_TAG_BITS + CACHE_BLOCK_OFFSET_BITS);
 
-    //Read the valid bit and the tag from the cache set
-    bool isCacheSetValid = cachePtr->cacheSets[CACHE_SETS].validBit;
-    bool tagFieldsMatch = addressTagField == cachePtr->cacheSets[CACHE_SETS].tag;
-    
-    for (int i = 0; i < CACHE_SETS; i++){
-        bool isCacheSetValid = cachePtr->cacheSets[CACHE_SETS].validBit;
-        bool tagFieldsMatch = addressTagField == cachePtr->cacheSets[CACHE_SETS].tag;
-        // if (
-        
-        // )
-    };
-    //CacheInitialize(isCacheSetValid, tagFieldsMatch);
+    //Check if any block in the cache set has a matching tag
+    for (i = 0; i < CACHE_SETS; i++) {
+        bool isCacheSetValid = cachePtr->cacheSets[i].validBit;
+        bool tagFieldsMatch = addressTagField == cachePtr->cacheSets[i].tag;
 
-    //If either the valid bit is false or the cache set tag doesn't match the address tag field,
-    //then read the block from memory into the cache set
-    if (isCacheSetValid == false || tagFieldsMatch == false)
-    {
-        //The address of the memory block is determined by the cache set index bits and 
-        //the cache set tag bits.
-        uint8_t memoryBlockAddress = mainMemoryAddress & MAIN_MEMORY_BLOCK_ADDDRESS_BITMASK;
-
-        //Read the block from memory
-        cachePtr->cacheSets[i].blockValues[0] = cachePtr->mainMemoryPtr->values[memoryBlockAddress];
-        cachePtr->cacheSets[i].blockValues[1] = cachePtr->mainMemoryPtr->values[memoryBlockAddress + 1];
-        cachePtr->cacheSets[i].blockValues[2] = cachePtr->mainMemoryPtr->values[memoryBlockAddress + 2];
-        cachePtr->cacheSets[i].blockValues[3] = cachePtr->mainMemoryPtr->values[memoryBlockAddress + 3];
-
-        //Update the cache set tag field and valid bit
-        cachePtr->cacheSets[addressTagField].tag = addressTagField;
-        cachePtr->cacheSets[addressTagField].validBit = true;
+        if (isCacheSetValid && tagFieldsMatch) {
+            return i; // Cache hit, return the set index
+        }
     }
 
-    return addressTagField;
+    // Cache miss, need to replace a block using FIFO
+    // Find the oldest block in the cache set based on the FIFO replacement policy
+    uint8_t oldestBlockIndex = 0;
+    for (i = 1; i < CACHE_SETS; i++) {
+        if (cachePtr->cacheSets[i].validBit &&
+            cachePtr->cacheSets[i].tag == cachePtr->cacheSets[oldestBlockIndex].tag) {
+            oldestBlockIndex = i;
+        }
+    }
+
+    // Replace the oldest block with the new block
+    uint8_t memoryBlockAddress = mainMemoryAddress & MAIN_MEMORY_BLOCK_ADDDRESS_BITMASK;
+    cachePtr->cacheSets[oldestBlockIndex].blockValues[0] = cachePtr->mainMemoryPtr->values[memoryBlockAddress];
+    cachePtr->cacheSets[oldestBlockIndex].blockValues[1] = cachePtr->mainMemoryPtr->values[memoryBlockAddress + 1];
+    cachePtr->cacheSets[oldestBlockIndex].blockValues[2] = cachePtr->mainMemoryPtr->values[memoryBlockAddress + 2];
+    cachePtr->cacheSets[oldestBlockIndex].blockValues[3] = cachePtr->mainMemoryPtr->values[memoryBlockAddress + 3];
+
+    // Update the cache set tag field and valid bit
+    cachePtr->cacheSets[oldestBlockIndex].tag = addressTagField;
+    cachePtr->cacheSets[oldestBlockIndex].validBit = true;
+
+    return oldestBlockIndex;
 }
 
 void CacheViewCache(CachePtr cachePtr)
