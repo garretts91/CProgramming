@@ -54,8 +54,8 @@ uint8_t GetCacheSetIndex(CachePtr cachePtr, uint8_t mainMemoryAddress)
         }
     }
 
-    // Cache miss, need to replace a block using FIFO
-    // Find the oldest block in the cache set based on the FIFO replacement policy
+    //Cache miss, need to replace a block using FIFO
+    //Find the oldest block in the cache set based on the FIFO replacement policy
     uint8_t oldestBlockIndex = 0;
     for (i = 1; i < CACHE_SETS; i++) {
         if (cachePtr->cacheSets[i].validBit &&
@@ -64,14 +64,14 @@ uint8_t GetCacheSetIndex(CachePtr cachePtr, uint8_t mainMemoryAddress)
         }
     }
 
-    // Replace the oldest block with the new block
+    //Replace the oldest block with the new block
     uint8_t memoryBlockAddress = mainMemoryAddress & MAIN_MEMORY_BLOCK_ADDDRESS_BITMASK;
     cachePtr->cacheSets[oldestBlockIndex].blockValues[0] = cachePtr->mainMemoryPtr->values[memoryBlockAddress];
     cachePtr->cacheSets[oldestBlockIndex].blockValues[1] = cachePtr->mainMemoryPtr->values[memoryBlockAddress + 1];
     cachePtr->cacheSets[oldestBlockIndex].blockValues[2] = cachePtr->mainMemoryPtr->values[memoryBlockAddress + 2];
     cachePtr->cacheSets[oldestBlockIndex].blockValues[3] = cachePtr->mainMemoryPtr->values[memoryBlockAddress + 3];
 
-    // Update the cache set tag field and valid bit
+    //Update the cache set tag field and valid bit
     cachePtr->cacheSets[oldestBlockIndex].tag = addressTagField;
     cachePtr->cacheSets[oldestBlockIndex].validBit = true;
 
