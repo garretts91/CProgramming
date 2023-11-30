@@ -1,3 +1,8 @@
+//Name: Garrett Solomon
+//Date: November 30, 2023
+//Description: Updated the GetCacheSetIndex function from a direct map cache to fully associative cache
+//             removed the index and extended the tag bits, and implemented a first in first out cache replacement policy
+
 #include <stdio.h>
 #include "Cache.h"
 #include "PrintingFormats.h"
@@ -45,11 +50,13 @@ uint8_t GetCacheSetIndex(CachePtr cachePtr, uint8_t mainMemoryAddress)
     addressTagField = addressTagField >> (CACHE_TAG_BITS + CACHE_BLOCK_OFFSET_BITS);
 
     //Check if any block in the cache set has a matching tag
-    for (i = 0; i < CACHE_SETS; i++) {
+    for (i = 0; i < CACHE_SETS; i++) 
+    {
         bool isCacheSetValid = cachePtr->cacheSets[i].validBit;
         bool tagFieldsMatch = addressTagField == cachePtr->cacheSets[i].tag;
 
-        if (isCacheSetValid && tagFieldsMatch) {
+        if (isCacheSetValid && tagFieldsMatch) 
+        {
             return i; // Cache hit, return the set index
         }
     }
@@ -57,9 +64,10 @@ uint8_t GetCacheSetIndex(CachePtr cachePtr, uint8_t mainMemoryAddress)
     //Cache miss, need to replace a block using FIFO
     //Find the oldest block in the cache set based on the FIFO replacement policy
     uint8_t oldestBlockIndex = 0;
-    for (i = 1; i < CACHE_SETS; i++) {
-        if (cachePtr->cacheSets[i].validBit &&
-            cachePtr->cacheSets[i].tag == cachePtr->cacheSets[oldestBlockIndex].tag) {
+    for (i = 1; i < CACHE_SETS; i++) 
+    {
+        if (cachePtr->cacheSets[i].validBit && cachePtr->cacheSets[i].tag == cachePtr->cacheSets[oldestBlockIndex].tag) 
+        {
             oldestBlockIndex = i;
         }
     }
