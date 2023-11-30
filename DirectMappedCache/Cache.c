@@ -54,6 +54,9 @@ uint8_t GetCacheSetIndex(CachePtr cachePtr, uint8_t mainMemoryAddress)
     for (int i = 0; i < CACHE_SETS; i++){
         bool isCacheSetValid = cachePtr->cacheSets[CACHE_SETS].validBit;
         bool tagFieldsMatch = addressTagField == cachePtr->cacheSets[CACHE_SETS].tag;
+        // if (
+        
+        // )
     };
     //CacheInitialize(isCacheSetValid, tagFieldsMatch);
 
