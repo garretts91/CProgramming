@@ -66,7 +66,6 @@ uint8_t GetCacheSetIndex(CachePtr cachePtr, uint8_t mainMemoryAddress)
     uint8_t oldestBlockIndex = 0;
     oldestBlockIndex++;
     oldestBlockIndex %= 4; //++, if 4, set to zero 
-    
 
     //Replace the oldest block with the new block
     uint8_t memoryBlockAddress = mainMemoryAddress & MAIN_MEMORY_BLOCK_ADDDRESS_BITMASK;
