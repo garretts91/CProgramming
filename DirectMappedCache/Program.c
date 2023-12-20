@@ -17,32 +17,32 @@ uint8_t value = 0;
 printf("Starting cache system test...\n\n");
 Computer * computerPtr = &computer;
 ComputerInitialize(computerPtr);
-//TestCache(computerPtr);
-////Read word from cache, decrement word, write decremented word to cache
-//mainMemoryAddress = (uint8_t)0b000000;
-//cacheWord = TestCacheRead(computerPtr, mainMemoryAddress);
-//value = cacheWord - (uint8_t)1;
-//TestCacheReadWrite(computerPtr, mainMemoryAddress, value);
-////Read word from cache, decrement word, write decremented word to cache
-//mainMemoryAddress = (uint8_t)0b000100;
-//cacheWord = TestCacheRead(computerPtr, mainMemoryAddress);
-//value = cacheWord - (uint8_t)1;
-//TestCacheReadWrite(computerPtr, mainMemoryAddress, value);
-////Read word from cache, decrement word, write decremented word to cache
-//mainMemoryAddress = (uint8_t)0b001000;
-//cacheWord = TestCacheRead(computerPtr, mainMemoryAddress);
-//value = cacheWord - (uint8_t)1;
-//TestCacheReadWrite(computerPtr, mainMemoryAddress, value);
-////Read word from cache, decrement word, write decremented word to cache
-//mainMemoryAddress = (uint8_t)0b001100;
-//cacheWord = TestCacheRead(computerPtr, mainMemoryAddress);
-//value = cacheWord - (uint8_t)1;
-//TestCacheReadWrite(computerPtr, mainMemoryAddress, value);
-////Read word from cache, decrement word, write decremented word to cache
-//mainMemoryAddress = (uint8_t)0b010000;
-//cacheWord = TestCacheRead(computerPtr, mainMemoryAddress);
-//value = cacheWord - (uint8_t)1;
-//TestCacheReadWrite(computerPtr, mainMemoryAddress, value);
+TestCache(computerPtr);
+//Read word from cache, decrement word, write decremented word to cache
+mainMemoryAddress = (uint8_t)0b000000;
+cacheWord = TestCacheRead(computerPtr, mainMemoryAddress);
+value = cacheWord - (uint8_t)1;
+TestCacheReadWrite(computerPtr, mainMemoryAddress, value);
+//Read word from cache, decrement word, write decremented word to cache
+mainMemoryAddress = (uint8_t)0b000100;
+cacheWord = TestCacheRead(computerPtr, mainMemoryAddress);
+value = cacheWord - (uint8_t)1;
+TestCacheReadWrite(computerPtr, mainMemoryAddress, value);
+//Read word from cache, decrement word, write decremented word to cache
+mainMemoryAddress = (uint8_t)0b001000;
+cacheWord = TestCacheRead(computerPtr, mainMemoryAddress);
+value = cacheWord - (uint8_t)1;
+TestCacheReadWrite(computerPtr, mainMemoryAddress, value);
+//Read word from cache, decrement word, write decremented word to cache
+mainMemoryAddress = (uint8_t)0b001100;
+cacheWord = TestCacheRead(computerPtr, mainMemoryAddress);
+value = cacheWord - (uint8_t)1;
+TestCacheReadWrite(computerPtr, mainMemoryAddress, value);
+//Read word from cache, decrement word, write decremented word to cache
+mainMemoryAddress = (uint8_t)0b010000;
+cacheWord = TestCacheRead(computerPtr, mainMemoryAddress);
+value = cacheWord - (uint8_t)1;
+TestCacheReadWrite(computerPtr, mainMemoryAddress, value);
 unsigned char userResponse = 0;
 unsigned int userAddressInput = 0;
 printf("Read a word from physical memory (y/n): ");
